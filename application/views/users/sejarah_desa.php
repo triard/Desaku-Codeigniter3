@@ -38,7 +38,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav mr-auto">
 	<li class="nav-item">
-      		<a class="nav-link" href="#">Beranda<span class=""></span></a>
+      		<a class="nav-link" href="<?php echo  base_url('/')?>">Beranda<span class=""></span></a>
     	</li>
 		<!-- Dropdown -->
     	<li class="nav-item dropdown active">

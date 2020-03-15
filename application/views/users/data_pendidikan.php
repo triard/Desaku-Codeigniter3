@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Desaku | Visi dan Misi</title>
+  <title> <?php echo $title ?></title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -15,7 +15,15 @@
   .responsive img{
       max-width:100%;
       height: auto;
-      }
+   }
+   .angka{
+        text-align: right!important;
+        margin-right: .5em;
+        text-align: center;
+    }
+    .tabel-style{
+        overflow-y: scroll;overflow-x: scroll; width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -38,7 +46,7 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav mr-auto">
 	<li class="nav-item">
-      		<a class="nav-link" href="#">Beranda<span class=""></span></a>
+      		<a class="nav-link" href="<?php echo  base_url('/')?>">Beranda<span class=""></span></a>
     	</li>
 		<!-- Dropdown -->
     	<li class="nav-item dropdown">
@@ -46,26 +54,29 @@
         	Profil Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Sejarah Desa</a>
-        <a class="dropdown-item" href="#">Profil Wilayah Desa</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User')?>">Sejarah Desa</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/wilayah')?>">Profil Wilayah Desa</a>
       	</div>
 		</li>
-		<li class="nav-item dropdown active">
+		<li class="nav-item dropdown">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Pemerintah Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item active" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/visi')?>">Visi Dan Misi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/struktur')?>">Struktur Organisasi</a>
       	</div>
     </li>
-    <li class="nav-item dropdown">
+    <li class="nav-item dropdown active">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Data Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_wilayah')?>">Data Wilayah Administratif </a>
+        <a class="dropdown-item active" href="<?php echo  base_url('User/data_pendidikan')?>">Data Pendidikan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_pekerjaan')?>">Data Pekerjaan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_agama')?>">Data Agama</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_sex')?>">Data Jenis Kelamin</a>
       	</div>
 		</li>
     </ul>
@@ -77,30 +88,46 @@
 </nav>
   <div class="row">
     <div class="col-sm-8">
-    <br><br>
-      <h2>Visi dan Misi Dan Program Kerja</h2>
-      <p>Sebagaimana desa-desa yang lain, Desa Trate Kecamatan Sugihwaras juga memiliki Visi dan Misi bagi desanya serta program kerja desa. Berikut uraian visi dan misi serta program kerja Desa Trate Kecamatan Sugihwaras Kabupaten Bojonegoro.</p>
-      <br>
-      <h3><center>Visi</center></h3>
-      <p><b>“Terwujudnya Masyarakat Desa Trate sebagai Desa yang agamis, mandiri untuk mencapai masyarakat yang sehat, cerdas dan lebih sejahtera serta melayani masyarakat dengan sepenuh hati”.</b></p>
-      <br>
-      <h3><center>Misi</center></h3>
-      <p>1. Memujudkan dan mengembangkan kegiatan keagamaan untuk menambah keimanan dan ketaqwaan kepada Tuhan Yang Maha Esa.</p>
-      <p>2. Mewujudkan dan mendorong terjadinya usaha-usaha kerukunan antar dan intern warga masyarakat yang disebabkan karena adanya perbedaan agama, keyakinan, organisasi dan lainnya dalam suasana saling menghargai dan menghormati.</p>
-      <p>3. Membangun dan meningkatkan hasil pertanian dengan jalan penataan pengairan, perbaikan jalan sawah / jalan usaha tani, pemupukan, dan pola tanam yang baik.</p>
-      <br>
-      <h3><center>Program Kerja</center></h3>
-      <p>1. Peningkatan Pembangunan Infrastruktur yang Mendukung Perekonomian Desa</p>
-      <p>2. Peningkatan Kualitas Kesehatan Masyarakat</p>
-      <p>3. Pengembangan Pendidikan Bermutu dan Berkualitas</p>
-      <p>4. Peningkatan Pembangunan Ekonomi  dengan Mendorong Tumbuh dan Berkembangnya Pembangunan di Bidang Pertanian Dalam Arti Luas.</p>
-      <p>5. Peningkatan Tata Kelola Pemerintahan Yang Baik (Good Governance)</p>
-      <br>
+    <br><br>    
+    <h2>Data Demografi Berdasar Pendidikan</h2>
+    <br>
+    <div class="tabel-style">        
+
+    <table class="table">
+          <thead>
+            <tr>
+					<th rowspan="2" style="text-align:left;">Kelompok</th>
+                    <th colspan="2">Jumlah</th>
+                    <th colspan="2">Laki-laki</th>
+                    <th colspan="2">Perempuan</th>
+            </tr>
+            <tr>
+                <th style="text-align: right">n</th>
+                <th style="text-align: right">%</th>
+                <th style="text-align: right">n</th>
+                <th style="text-align: right">%</th>
+                <th style="text-align: right">n</th>
+                <th style="text-align: right">%</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>TIDAK / BELUM SEKOLAH</td>
+              <td class="angka">26</td>
+              <td class="angka">23,85%</td>
+              <td class="angka">8</td>
+              <td class="angka">7,34%</td>
+              <td class="angka">18</td>
+              <td class="angka">16.51%</td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
     </div>
     <div class="col-sm-4">
       <h5>Wilayah Desa</h5>
       <div class="fakeimg">
-        <a href="https://www.google.com/maps/place/Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3073796,111.9285504,14z/data=!3m1!4b1!4m5!3m4!1s0x2e782bf8b25b4017:0xc68196dfe06bf16a!8m2!3d-7.3003622!4d111.9492682" target="blank" 
+        <a href="https://www.google.com/maps/place/Trate,+Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3011649,111.9598312,15z/data=!3m1!4b1!4m5!3m4!1s0x2e78294e97c50a7b:0x603113d4a3811225!8m2!3d-7.2994534!4d111.9671537" target="blank" 
         class="responsive"><img src="<?php echo base_url('assets/trate.png'); ?>" alt=""></a>
       </div>
       <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
