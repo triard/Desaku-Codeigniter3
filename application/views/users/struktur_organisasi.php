@@ -41,22 +41,22 @@
       		<a class="nav-link" href="#">Beranda<span class=""></span></a>
     	</li>
 		<!-- Dropdown -->
-    	<li class="nav-item dropdown active">
+    	<li class="nav-item dropdown">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Profil Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item active" href="#">Sejarah Desa</a>
+        <a class="dropdown-item" href="#">Sejarah Desa</a>
         <a class="dropdown-item" href="#">Profil Wilayah Desa</a>
       	</div>
 		</li>
-		<li class="nav-item dropdown">
+		<li class="nav-item dropdown active">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Pemerintah Desa
       	</a>
       	<div class="dropdown-menu">
         <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item active" href="#">Struktur Organisasi</a>
       	</div>
     </li>
     <li class="nav-item dropdown">
@@ -77,8 +77,52 @@
 </nav>
   <div class="row">
     <div class="col-sm-8">
-      <h2>Sejarah Desa</h2>
-      <p>Zaman dahulu, pada zaman pendudukan Belanda, kekalahan Mataram atas Belanda menyebabkan banyak punggowo atau senopati yang lari menyelamatkan diri. Diantara yang melarikan diri itu adalah Ki Sendi dan Nyai Sendi. Ketika mereka memasuki daerah yang masih alas gung liwang Liwung (hutan yang masih sangat lebat), sayup-sayup terdengar suara wanita menangis dari kejauhan. Hati mereka tergerak, mereka merasa iba. Setelah itu mereka memutuskan untuk mencari darimana suara tersebut berasal. Setelah dicari hampir seharian, menjelang matahari terbenam mereka menemukan wanita tersebut di sebuah hamparan sawah. Tak terduga ternyata wanita tersebut mendeerita penyakit buduk (kusta). Akhirnya Ki dan Nyai Sendi merawat wanita tersebut. Karena kebaikan hati mereka, pada akhirnya wanita tersebut waras (sembuh). Oleh karena itu, kemudian Ki Sendi dan Nyai Sendi memberi nama tempat yang ditemui mereka dengan nama Sugihwaras. Dengan sugih berarti kaya, dan waras berarti sembuh, yang bermakna kota kesembuhan dan nantinya akam menjadi daerah yang kaya.</p>
+      <br><br>
+      <h2>Struktur Organisasi</h2><br>
+      <div class="container">
+      <table class="table">
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Jabatan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Jonny Anwar</td>
+              <td>Kepala Desa</td>
+            </tr>
+            <tr>
+              <td>Nafiah</td>
+              <td>Sekretaris Desa</td>
+            </tr>
+            <tr>
+              <td>Hanafi</td>
+              <td>Kepala Urusan Pemerintahan</td>
+            </tr>
+            <tr>
+              <td>Rabu</td>
+              <td>Kepala Urusan Pembangunan</td>
+            </tr>
+            <tr>
+              <td>Mustakim</td>
+              <td>Kepala Urusan Kesra</td>
+            </tr>
+            <tr>
+              <td>Hamidah</td>
+              <td>Kepala Urusan Keuangan</td>
+            </tr>
+            <tr>
+              <td>Solikin</td>
+              <td>Kepala Urusan Trantib</td>
+            </tr>
+            <tr>
+              <td>Subhan</td>
+              <td>Kepala Urusan Umum</td>
+            </tr>
+          </tbody>
+      </table>
+      </div>
     </div>
     <div class="col-sm-4">
       <h5>Wilayah Desa</h5>
