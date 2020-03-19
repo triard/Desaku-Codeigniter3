@@ -70,7 +70,7 @@ class Login extends CI_Controller
 				redirect('penduduk');
 			}
 		} else {
-			$this->session->set_flashdata('message', 'Password salah');
+			$this->session->set_flashdata('message', 'Username atau Password salah');
 			redirect('login');
 			//redirect('login/index','refresh');
 		}
