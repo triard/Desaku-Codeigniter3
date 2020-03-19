@@ -1,3 +1,6 @@
+<?=
+	form_open('login/proses_login');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,13 +50,23 @@
 								<button type="submit" class="btn btn-primary">Login</button>
 							</form>
 						</div>
-						<div class="card-footer text-muted text-center">
-							<a class="btn btn-danger" href="<?php echo base_url('Welcome') ?>">Back</a>
-						</div>
+					</div>
+					<div class="alert alert-secondary mt-3">
+						<h5 class="text-center align-middle">
+							<?php
+							// Cek apakah terdapat session nama message
+							if ($this->session->flashdata('message')) { // Jika ada
+								echo $this->session->flashdata('message'); // Tampilkan pesannya
+							} else {
+								echo "Masukkan Username dan Password";
+							}
+							?>
+						</h5>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 </body>
 <script>
@@ -78,3 +91,6 @@
 </script>
 
 </html>
+<?=
+	form_close();
+?>
