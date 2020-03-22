@@ -10,11 +10,6 @@
 <body>
     <h1>Daftar Pengaduan</h1>
 
-<<<<<<< HEAD
-    <!-- <?php var_dump($pengaduan); ?> -->
-=======
-
->>>>>>> a28855c3c9aaabf9a0b9ddd3a0794f6a5c9010ad
     <table>
 
         <tr>

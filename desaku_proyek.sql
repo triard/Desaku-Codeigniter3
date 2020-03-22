@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2020 at 10:28 AM
+-- Generation Time: Mar 22, 2020 at 06:26 PM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -91,6 +91,27 @@ CREATE TABLE `penduduk` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pengaduan`
+--
+
+CREATE TABLE `pengaduan` (
+  `id_pengaduan` int(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `nik` varchar(30) NOT NULL,
+  `isi` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pengaduan`
+--
+
+INSERT INTO `pengaduan` (`id_pengaduan`, `nama`, `nik`, `isi`) VALUES
+(1, 'f', 'f', 'f'),
+(2, 'tejo', 'ee', 'ee');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `surat`
 --
 
@@ -113,11 +134,19 @@ CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(40) NOT NULL,
-  `jenis_user` enum('Admin','Sekretaris','Redaksi') NOT NULL,
+  `jenis_user` enum('Admin','Sekretaris','Redaksi','Penduduk') NOT NULL,
   `email` varchar(40) NOT NULL,
   `nama` varchar(60) NOT NULL,
   `foto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `jenis_user`, `email`, `nama`, `foto`) VALUES
+(1, 'admin', 'admin', 'Admin', 'administrator@gmail.com', 'admin', 'admin.jpg'),
+(2, 'tejo', 'tejo', 'Penduduk', 'tejo@gmail.com', 'surti tejo', 'surti.png');
 
 --
 -- Indexes for dumped tables
@@ -152,6 +181,12 @@ ALTER TABLE `detail_surat`
 ALTER TABLE `penduduk`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_alamat` (`id_alamat`);
+
+--
+-- Indexes for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD PRIMARY KEY (`id_pengaduan`);
 
 --
 -- Indexes for table `surat`
@@ -196,6 +231,12 @@ ALTER TABLE `penduduk`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  MODIFY `id_pengaduan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `surat`
 --
 ALTER TABLE `surat`
@@ -205,7 +246,7 @@ ALTER TABLE `surat`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
