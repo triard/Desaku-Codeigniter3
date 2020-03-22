@@ -8,7 +8,7 @@ class Overview extends CI_Controller {
 		parent ::__construct();
 		$this->load->model('');
 		$this->load->library('form_validation');
-		if($this->session->userdata('level')!="admin"){
+		if($this->session->userdata('jenis_user')!="Admin"){
 			redirect('Login','refresh');
 		}
 	}

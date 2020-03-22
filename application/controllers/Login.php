@@ -4,7 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Login extends CI_Controller
 {
 
-
 	public function __construct()
 	{
 		parent::__construct();
@@ -18,34 +17,14 @@ class Login extends CI_Controller
 
 	public function index()
 	{
-		// $this->form_validation->set_rules('username', 'username', 'trim|required');
-		// $this->form_validation->set_rules('password', 'password', 'trim|required');
-		// if ($this->form_validation->run() == FALSE) {
+		if ($this->form_validation->run() == FALSE) {
 		$data['title'] = "Login Admin | Desa Trate";
 		$this->load->view('login/index', $data);
-		// } else {
-		// 	$this->login();
-		// }
+		} else {
+			$this->index();
+		}
 	}
 
-	// public function login()
-	// {
-	// 	$username = $this->input->post('username');
-	// 	$password = $this->input->post('password');
-
-	// 	$user = $this->db->get_where('user', ['username' => $username])->row_array();
-
-	// 	if ($user) {
-	// 		if ($password == $user['password']) {
-	// 			redirect('user');
-	// 		} else {
-	// 			redirect('login');
-	// 		}
-	// 	} else {
-	// 		echo "<script type='text/javascript'>alert('username atau password salah');</script>";
-	// 		redirect('login');
-	// 	}
-	// }
 
 	public function proses_login()
 	{
@@ -63,16 +42,30 @@ class Login extends CI_Controller
 
 			if ($this->session->userdata('jenis_user') == 'Admin') {
 				# code...
-				redirect('user');
+				redirect('admin/Overview');
 			} else if ($this->session->userdata('jenis_user') == 'sekretaris') {
 				redirect('sekretaris');
-			} else if ($this->session->userdata('jenis_user') == 'penduduk') {
-				redirect('penduduk');
+			} else if ($this->session->userdata('jenis_user') == 'Penduduk') {
+				redirect('UserLogin/index');
 			}
 		} else {
 			$this->session->set_flashdata('message', 'Username atau Password salah');
-			redirect('login');
-			//redirect('login/index','refresh');
+			redirect('login','refresh');
 		}
+	}
+
+	public function logout()
+	{
+	  $this->session->userdata('Admin');
+	  $this->session->sess_destroy();
+	  redirect('Welcome', 'refresh');
+	}
+  
+
+	public function logoutPenduduk()
+	{
+	  $this->session->userdata('Penduduk');
+	  $this->session->sess_destroy();
+	  redirect('Welcome', 'refresh');
 	}
 }

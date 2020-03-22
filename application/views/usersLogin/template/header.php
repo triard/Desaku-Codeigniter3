@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title> <?php echo $title ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -17,14 +18,17 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Surat Online <span class="sr-only">(current)</span></a>
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('UserLogin') ?>">Beranda<span class="sr-only">(current)</span></a>
+      </li>  
+    <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('UserLogin/surat_online_view') ?>">Surat Online <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('UserLogin/pengaduan') ?>">Pengaduan</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="<?php echo base_url('UserLogin/feedback') ?>">Feedback</a>
+        <a class="nav-link" href="<?php echo base_url('UserLogin/feddback') ?>">Feedback</a>
       </li>
     </ul>
     <a class="form-inline my-2 my-lg-0" href="<?php echo base_url('#'); ?>">
@@ -32,19 +36,3 @@
     </a>
   </div>
 </nav>
-    
-    <div class="container pt-3">
-        <div class="card">
-            <div class="card-header">Data Permintaan Surat Online</div>
-            <div class="card-body">
-                <a href="#" class="btn btn-success">Data Baru</a>
-
-                     </div>
-                 </div>
-
-            </div>
-        </div>
-    </div>
-  </div>
-</body>
-</html>
