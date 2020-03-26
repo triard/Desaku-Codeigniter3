@@ -21,14 +21,14 @@ class Chart extends CI_Controller
 
     public function index()
     {
-        $query = $this->db->query("select count(id) as idp, jenis_kelamin as jenis , count(jenis_kelamin) as jk from penduduk GROUP BY jenis_kelamin");
+        $query = $this->db->query("SELECT pendidikan as pen, COUNT(pendidikan) as pd FROM penduduk GROUP BY pendidikan");
 
         $record = $query->result();
         $data = [];
 
         foreach ($record as $row) {
-            $data['label'][] = $row->jenis;
-            $data['data'][] = $row->jk;
+            $data['label'][] = $row->pen;
+            $data['data'][] = $row->pd;
         }
         $data['chart_data'] = json_encode($data);
         $this->load->view('chart.php', $data);

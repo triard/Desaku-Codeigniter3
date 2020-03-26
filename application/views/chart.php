@@ -85,7 +85,7 @@
 
         //create bar Chart class object
         var chart1 = new Chart(ctx, {
-            type: "pie",
+            type: "doughnut",
             data: data,
             options: options
         });
