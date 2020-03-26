@@ -29,7 +29,7 @@
                     <div class="footer">
                         <div class="row">
                             <div class="col-6">
-                                <button type="submit" class="btn btn-success btn-send disabled" value="Kirim Permohonan">
+                                <input type="submit" class="btn btn-success btn-send" value="Kirim Permohonan">
                             </div>
                 </form>
                 <div class="col-6">

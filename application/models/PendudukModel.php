@@ -5,6 +5,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class PendudukModel extends CI_Model
 {
 
+    private $_pengaduan = "pengaduan";
+
     public function tambahPengaduan()
     {
         $data = array(
@@ -21,6 +23,12 @@ class PendudukModel extends CI_Model
     {
         return $this->db->get('pengaduan')->result_array();
     }
+
+    public function getPengaduanId($id)
+    {
+        return $this->db->get_where($this->_pengaduan, ['id' => $id])->row_array();
+    }
+
 }
 
 /* End of file PendudukModel.php */
