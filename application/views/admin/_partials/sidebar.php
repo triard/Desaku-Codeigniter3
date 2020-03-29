@@ -17,13 +17,13 @@
         </div>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Users</span></a>
+        <a class="nav-link" href="<?php echo base_url('admin/SuratOnlineAdmin') ?>">
+        <i class="fas fa-envelope"></i>
+            <span>Surat</span></a>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="<?= base_url('admin/pengaduan') ?>">
-            <i class="fas fa-fw fa-envelope"></i>
+        <i class="fas fa-info-circle"></i>
             <span>Pengaduan</span></a>
     </li>
     <li class="nav-item">

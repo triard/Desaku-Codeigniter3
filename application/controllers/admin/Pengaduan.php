@@ -9,15 +9,14 @@ class Pengaduan extends CI_Controller
     {
         parent::__construct();
         $this->load->model('PendudukModel');
-        $this->load->model('SuratModel');
         $this->load->library('session');
-
-        // if($this->session->userdata('evel')!="Admin"){
-        //   redirect('login','refresh');            
-        // }
+        if($this->session->userdata('jenis_user')!="Admin"){
+          redirect('login','refresh');            
+        }
     }
     public function index()
     {
+        $data['nama2'] = $this->session->userdata('user');
         $data['title'] = "Daftar Pengaduan";
         $data['pengaduan'] = $this->PendudukModel->getPengaduan();
         $this->load->view('admin/pengaduan', $data);
@@ -26,6 +25,7 @@ class Pengaduan extends CI_Controller
     
 	public function pengaduan_detail($id)
 	{
+        $data['nama2'] = $this->session->userdata('user');
 		$data['title'] = "Desaku | Pengaduan Detail";
 		$data['pengaduanDetail'] = $this->PendudukModel->getPengaduanId($id);
 		$this->load->view('admin/pengaduan_detail', $data);
