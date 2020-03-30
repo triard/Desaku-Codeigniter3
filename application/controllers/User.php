@@ -47,4 +47,6 @@ class User extends CI_Controller {
 		$this->load->view('users/data_sex',$data);
 	}
 
+	
+
 }

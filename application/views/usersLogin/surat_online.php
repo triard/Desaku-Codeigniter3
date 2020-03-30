@@ -15,7 +15,6 @@
                             <th>nik</th>
                             <th>No_telp</th>
                             <th>category</th>
-                            <th>isi</th>
                             <th>tanggal permohonan</th>
                             <th>status</th>
                         </tr>
@@ -27,7 +26,6 @@
                     <td><?= $st["nik"] ?></td>
                     <td><?= $st["no_telp"] ?></td>
                     <td><?= $st["category"] ?></td>
-                    <td><?= $st["isi"] ?></td>
                     <td><?= $st["tgl_permohonan"] ?></td>
                     <td><?= $st["status"] ?></td>
                     </tr>

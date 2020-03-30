@@ -80,12 +80,75 @@
 </nav>
   <div class="row">
     <div class="col-sm-8">
-      <h2>TITLE HEADING</h2>
-      <h5>Title description, Dec 7, 2017</h5>
-      <div class="fakeimg">Fake Image</div>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <h2>Info Corona</h2> last update <?php echo date("Y-m-d");?>
+      <p>
+      <?php foreach ($corona as $c){?>
+        <tr>
+              <h5><?php echo $c->name ?></h5>
+              <br>
+              <th>Positif : </th>
+              <td><?php echo $c->positif ?> Orang,</td>
+              <th>Sembuh : </th>
+              <td><?php echo $c->sembuh ?> Orang,</td>
+              <th>Meninggal : </th>
+              <td><?php echo $c->meninggal ?> Orang</td>
+        </tr>
+      <?php ;} ?>
       <br>
+      <?php
+$url = 'https://api.kawalcorona.com/indonesia/provinsi/';
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, $url);
+$json = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($json, true);
+
+$list = $data['atrributes']['FID'];
+var_dump($list);die;
+?>
+
+      </p>
+      <br>
+      <p>
+      <?php
+$url = 'https://bokusan.my.id/api/jawa-timur';
+
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, $url);
+$json = curl_exec($ch);
+curl_close($ch);
+
+$data = json_decode($json, true);
+
+$list = $data['data']['all'];
+?>
+
+<body>
+    <h2>Data Jatim</h2>
+
+    <table>
+        <tr>
+            <th>Region</th>
+            <th>confirmed</th>
+            <th>recovered</th>
+            <th>deaths</th>
+        </tr>
+        <tr>
+            <?php foreach ($list as $key => $value) : ?>
+                <td><?= $value['region']; ?></td>
+                <td><?= $value['confirmed']; ?></td>
+                <td><?= $value['recovered']; ?></td>
+                <td><?= $value['deaths']; ?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+      </p>
       <h2>TITLE HEADING</h2>
       <h5>Title description, Sep 2, 2017</h5>
       <div class="fakeimg">Fake Image</div>
