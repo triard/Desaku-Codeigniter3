@@ -53,7 +53,7 @@
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Profil Desa
       	</a>
-      	<div class="dropdown-menu">
+      	<div class="dropdown-menu">/
         <a class="dropdown-item" href="<?php echo  base_url('User')?>">Sejarah Desa</a>
         <a class="dropdown-item" href="<?php echo  base_url('User/wilayah')?>">Profil Wilayah Desa</a>
       	</div>

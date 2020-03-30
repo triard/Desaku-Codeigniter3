@@ -111,9 +111,21 @@
           $data = json_decode($json, true);
 
           $list = $data[3]['attributes'];
-          var_dump($list);
-          die;
+        //  var_dump($list);
+         // die;
           ?>
+
+<h2>Data Jatim</h2>
+
+<table>
+  <tr>
+  Provinsi : <?php echo $list['Provinsi'];?><br>
+    Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br>
+    Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?><br>
+    Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?>
+  
+  </tr>
+</table>
 
         </p>
         <br>
@@ -134,7 +146,7 @@
           ?>
 
           <body>
-            <h2>Data Jatim</h2>
+            <h2>Data Kabupaten di Jatim</h2>
 
             <table>
               <tr>
@@ -144,20 +156,17 @@
                 <th>deaths</th>
               </tr>
               <tr>
-                <?php foreach ($list as $key => $value) : ?>
-                  <td><?= $value['region']; ?></td>
-                  <td><?= $value['confirmed']; ?></td>
-                  <td><?= $value['recovered']; ?></td>
-                  <td><?= $value['deaths']; ?></td>
-              </tr>
+            <?php foreach ($list as $key => $value) : ?>
+                <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
+                    <td><?= $value['region']; ?></td>
+                    <td><?= $value['confirmed']; ?></td>
+                    <td><?= $value['recovered']; ?></td>
+                    <td><?= $value['deaths']; ?></td>
+                <?php endif ?>
+        </tr>
             <?php endforeach; ?>
             </table>
         </p>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg">Fake Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
       </div>
       <div class="col-sm-4">
         <h5>Wilayah Desa</h5>
