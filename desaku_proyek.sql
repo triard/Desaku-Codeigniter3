@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Mar 2020 pada 15.03
+-- Waktu pembuatan: 31 Mar 2020 pada 08.12
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -103,7 +103,7 @@ INSERT INTO `detail_surat` (`id`, `nama`) VALUES
 CREATE TABLE `penduduk` (
   `id` int(11) NOT NULL,
   `id_alamat` int(11) NOT NULL,
-  `nik` varchar(25) NOT NULL,
+  `nik` int(16) NOT NULL,
   `nama` int(11) NOT NULL,
   `status` enum('Hidup','Mati') NOT NULL,
   `nomor_kk` varchar(25) NOT NULL,
@@ -114,7 +114,8 @@ CREATE TABLE `penduduk` (
   `tgl_lahir` date NOT NULL,
   `pendidikan` enum('Tidak Sekolah','SD','SMP','SMP','SMA','S1','S2','S3','S4','D1','D2','D3','D4') NOT NULL,
   `pekerjaan` varchar(20) NOT NULL,
-  `status_kawin` enum('Kawin','Belum Kawin') NOT NULL
+  `status_kawin` enum('Kawin','Belum Kawin') NOT NULL,
+  `foto` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -125,7 +126,7 @@ CREATE TABLE `penduduk` (
 
 CREATE TABLE `penduduk_login` (
   `id` int(11) NOT NULL,
-  `username` int(11) NOT NULL,
+  `username` int(16) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -164,7 +165,7 @@ CREATE TABLE `struktur_organisasi` (
 CREATE TABLE `surat` (
   `id` int(11) NOT NULL,
   `id_detail_surat` int(11) NOT NULL,
-  `id_pend` int(11) NOT NULL,
+  `id_pend` int(16) NOT NULL,
   `isi` text NOT NULL,
   `tgl_permohonan` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` enum('Proses','Dapat diambil','Gagal') NOT NULL DEFAULT 'Proses'
@@ -182,7 +183,7 @@ CREATE TABLE `user` (
   `password` varchar(40) NOT NULL,
   `jenis_user` enum('Admin','Sekretaris','Redaksi','Penduduk') NOT NULL,
   `email` varchar(40) NOT NULL,
-  `nama` varchar(60) NOT NULL,
+  `alamat` varchar(60) NOT NULL,
   `foto` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -190,7 +191,7 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `jenis_user`, `email`, `nama`, `foto`) VALUES
+INSERT INTO `user` (`id`, `username`, `password`, `jenis_user`, `email`, `alamat`, `foto`) VALUES
 (1, 'admin', 'admin', 'Admin', 'admin@app.id', 'sutarjo', ''),
 (2, 'tri', 'tri', 'Penduduk', 'tri@app.id', 'wuswus', '');
 
@@ -254,6 +255,7 @@ ALTER TABLE `detail_surat`
 --
 ALTER TABLE `penduduk`
   ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `nik` (`nik`),
   ADD KEY `id_alamat` (`id_alamat`);
 
 --
@@ -261,6 +263,7 @@ ALTER TABLE `penduduk`
 --
 ALTER TABLE `penduduk_login`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`),
   ADD KEY `FK_penduduk_login_penduduk` (`username`);
 
 --
@@ -327,7 +330,7 @@ ALTER TABLE `detail_surat`
 -- AUTO_INCREMENT untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `penduduk_login`
@@ -379,14 +382,14 @@ ALTER TABLE `penduduk`
 -- Ketidakleluasaan untuk tabel `penduduk_login`
 --
 ALTER TABLE `penduduk_login`
-  ADD CONSTRAINT `FK_penduduk_login_penduduk` FOREIGN KEY (`username`) REFERENCES `penduduk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_penduduk_login_penduduk` FOREIGN KEY (`username`) REFERENCES `penduduk` (`nik`);
 
 --
 -- Ketidakleluasaan untuk tabel `surat`
 --
 ALTER TABLE `surat`
   ADD CONSTRAINT `surat_ibfk_1` FOREIGN KEY (`id_detail_surat`) REFERENCES `detail_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `surat_ibfk_2` FOREIGN KEY (`id_pend`) REFERENCES `penduduk` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `surat_ibfk_2` FOREIGN KEY (`id_pend`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
