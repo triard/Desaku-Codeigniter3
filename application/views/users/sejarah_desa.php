@@ -40,23 +40,23 @@
 	<li class="nav-item">
       		<a class="nav-link" href="<?php echo  base_url('/')?>">Beranda<span class=""></span></a>
     	</li>
-		<!-- Dropdown -->
-    	<li class="nav-item dropdown active">
+			<!-- Dropdown -->
+      <li class="nav-item dropdown active">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Profil Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item active" href="#">Sejarah Desa</a>
-        <a class="dropdown-item" href="<?php echo base_url('User/Wilayah') ?>">Profil Wilayah Desa</a>
+        <a class="dropdown-item active" href="<?php echo  base_url('User')?>">Sejarah Desa</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/wilayah')?>">Profil Wilayah Desa</a>
       	</div>
 		</li>
-		<li class="nav-item dropdown">
+    <li class="nav-item dropdown">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Pemerintah Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/visi')?>">Visi Dan Misi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/struktur')?>">Struktur Organisasi</a>
       	</div>
     </li>
     <li class="nav-item dropdown">
@@ -64,8 +64,11 @@
         	Data Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_wilayah')?>">Data Wilayah Administratif </a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_pendidikan')?>">Data Pendidikan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_pekerjaan')?>">Data Pekerjaan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_agama')?>">Data Agama</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_sex')?>">Data Jenis Kelamin</a>
       	</div>
 		</li>
     </ul>
