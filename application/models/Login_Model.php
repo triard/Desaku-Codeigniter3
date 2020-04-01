@@ -21,6 +21,22 @@ class Login_Model extends CI_Model
             return $query->result();
         }
     }
+
+    public function login_penduduk($username, $password)
+    {
+        $this->db->select('*');
+        $this->db->from('penduduk_login');
+        $this->db->where('username', $username);
+        $this->db->where('password', $password);
+        $this->db->limit(1);
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 0) {
+            return FALSE;
+        } else {
+            return $query->result();
+        }
+    }
 }
     
     /* End of file Login_Model.php */
