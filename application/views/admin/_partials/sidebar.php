@@ -16,4 +16,9 @@
         <i class="fas fa-info-circle"></i>
             <span>Pengaduan</span></a>
     </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<?= base_url('admin/agenda') ?>">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>Agenda</span></a>
+    </li>
 </ul>

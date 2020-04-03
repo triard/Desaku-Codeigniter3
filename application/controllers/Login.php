@@ -37,14 +37,12 @@ class Login extends CI_Controller
 		{
 			foreach ($cek_login as $row) 
 			{
-				# code...
 				$this->session->set_userdata('user', $row->username);
 				$this->session->set_userdata('jenis_user', $row->jenis_user);
 			}
 
 			if ($this->session->userdata('jenis_user') == 'Admin') 
 			{
-				# code...
 				redirect('admin/Overview');
 			} else if ($this->session->userdata('jenis_user') == 'sekretaris')
 			 {
@@ -98,5 +96,9 @@ class Login extends CI_Controller
 	  $this->session->userdata('Penduduk');
 	  $this->session->sess_destroy();
 	  redirect('Welcome', 'refresh');
+	}
+
+	public function buatAkunPenduduk(){
+		
 	}
 }

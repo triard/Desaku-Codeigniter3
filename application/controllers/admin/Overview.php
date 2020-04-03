@@ -19,4 +19,6 @@ class Overview extends CI_Controller {
 		$data['nama2'] = $this->session->userdata('user');
 		$this->load->view('admin/overview', $data);
 	}
+
+	
 }

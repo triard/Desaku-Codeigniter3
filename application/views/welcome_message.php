@@ -32,9 +32,6 @@
     </div>
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">
-        <img src="bird.jpg" alt="logo" style="width:40px;">
-      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -83,22 +80,21 @@
     </nav>
     <div class="row">
       <div class="col-sm-8">
-        <h2>Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
-        <p>
-          <?php foreach ($corona as $c) : ?>
-            <tr>
-              <h5><?php echo $c->name ?></h5>
-              <br>
-              <th>Positif : </th>
-              <td><?php echo $c->positif ?> Orang,</td>
-              <th>Sembuh : </th>
-              <td><?php echo $c->sembuh ?> Orang,</td>
-              <th>Meninggal : </th>
-              <td><?php echo $c->meninggal ?> Orang</td>
-            </tr>
-          <?php endforeach ?>
-          <br>
-          <?php
+        <br>
+        <h2 style="color: red">Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
+        <br>
+      <div class="card-group">
+      <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+      <?php foreach ($corona as $c) : ?>
+        <div class="card-header"><?php echo $c->name ?></div>
+          <div class="card-body">
+            <p class="card-text">Positif : <?php echo $c->positif ?> Orang</p>
+            <p class="card-text">Sembuh  : <?php echo $c->sembuh ?> Orang</p>
+            <p class="card-text">Meninggal  : <?php echo $c->meninggal ?> Orang</p>
+            <?php endforeach ?>
+        </div>  
+      </div>
+      <?php
           $url = 'https://api.kawalcorona.com/indonesia/provinsi/';
 
           $ch = curl_init();
@@ -110,27 +106,17 @@
 
           $data = json_decode($json, true);
 
-          $list = $data[3]['attributes'];
-        //  var_dump($list);
-         // die;
+          $list = $data[4]['attributes'];
           ?>
-
-<h2>Data Jatim</h2>
-
-<table>
-  <tr>
-  Provinsi : <?php echo $list['Provinsi'];?><br>
-    Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br>
-    Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?><br>
-    Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?>
-  
-  </tr>
-</table>
-
-        </p>
-        <br>
-        <p>
-          <?php
+        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header"><?php echo $list['Provinsi'];?></div>
+          <div class="card-body">
+            <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
+            <p class="card-text">Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?></p>
+            <p class="card-text">Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?></p>
+        </div>  
+        </div>
+        <?php
           $url = 'https://bokusan.my.id/api/jawa-timur';
 
           $ch = curl_init();
@@ -144,41 +130,32 @@
 
           $list = $data['data']['all'];
           ?>
-
-          <body>
-            <h2>Data Kabupaten di Jatim</h2>
-
-            <table>
-              <tr>
-                <th>Region</th>
-                <th>confirmed</th>
-                <th>recovered</th>
-                <th>deaths</th>
-              </tr>
-              <tr>
-            <?php foreach ($list as $key => $value) : ?>
+     
+     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+           <?php foreach ($list as $key => $value) : ?>
                 <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
-                    <td><?= $value['region']; ?></td>
-                    <td><?= $value['confirmed']; ?></td>
-                    <td><?= $value['recovered']; ?></td>
-                    <td><?= $value['deaths']; ?></td>
-                <?php endif ?>
-        </tr>
+                  <div class="card-header"><?php echo $value['region'] ?></div>
+            <div class="card-body">
+            <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
+            <p class="card-text">Sembuh  : <?= $value['recovered']; ?> Orang</p>
+            <p class="card-text">Meninggal  : <?= $value['deaths']; ?>  Orang</p>
+            <?php endif ?>
             <?php endforeach; ?>
-            </table>
-        </p>
+
+        </div>  
+        </div>
+      </div>
       </div>
       <div class="col-sm-4">
         <h5>Wilayah Desa</h5>
         <div class="fakeimg">
           <a href="https://www.google.com/maps/place/Trate,+Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3011649,111.9598312,15z/data=!3m1!4b1!4m5!3m4!1s0x2e78294e97c50a7b:0x603113d4a3811225!8m2!3d-7.2994534!4d111.9671537" target="blank" class="responsive"><img src="<?php echo base_url('assets/trate.png'); ?>" alt=""></a>
         </div>
-        <p>login</p>
-        <div>
+
         <div class="card-body">
 							<form action="<?php echo base_url('Login/proses_login_penduduk') ?>" method="post" class="needs-validation" novalidate>
 								<div class="form-group">
-									<label for="username">Username:</label>
+									<label for="username">NIK:</label>
 									<input type="text" class="form-control" id="username" placeholder="Enter username" name="username" required>
 									<div class="valid-feedback">Valid.</div>
 									<div class="invalid-feedback">Please fill out this field.</div>
@@ -189,10 +166,29 @@
 									<div class="valid-feedback">Valid.</div>
 									<div class="invalid-feedback">Please fill out this field.</div>
 								</div>
-								<button type="submit" class="btn btn-primary">Login</button>
-							</form>
-						</div>
-        </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <a href="#" class="btn btn-warning" style="color:white;">Register</a>
+              </form>
+
+            </div>
+            <div>
+              
+            <div class="card" style="width: 18rem;">
+              <div class="card-header">
+              Agenda
+              </div>
+              <?php foreach ($agenda as $value) : ?> 
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                   <b><?= $value->agenda; ?></b>
+                   <p>Tempat : <?= $value->tempat; ?><br>
+                   Waktu : <?= $value->tanggal; ?> <?= $value->jam; ?><br>
+                   Koordinator : <?= $value->koordinator; ?></p>
+              </li>
+              </ul>
+              <?php endforeach; ?>
+            </div>
+       </div>
       </div>
     </div>
   </div>

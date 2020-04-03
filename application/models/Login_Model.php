@@ -18,6 +18,13 @@ class Login_Model extends CI_Model
         if ($query->num_rows() == 0) {
             return FALSE;
         } else {
+
+            foreach($query->result() as $login){
+                $sess_data['id'] = $login->id;
+                $sess_data['username'] = $login->username;
+                $sess_data['password'] = $login->password;
+                $this->session->set_userdata($sess_data) ;
+            }
             return $query->result();
         }
     }
