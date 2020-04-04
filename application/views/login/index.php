@@ -48,6 +48,8 @@
 									<div class="invalid-feedback">Please fill out this field.</div>
 								</div>
 								<button type="submit" class="btn btn-primary">Login</button>
+								<a href="<?php echo base_url('Login/buatAkunUser')?>" class="btn btn-warning" style="color: white">Registrasi</a>
+								<a href="<?php echo base_url('/')?>" class="btn btn-danger" >Cancel</a>
 							</form>
 						</div>
 					</div>

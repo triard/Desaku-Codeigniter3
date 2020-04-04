@@ -167,7 +167,7 @@
 									<div class="invalid-feedback">Please fill out this field.</div>
 								</div>
                 <button type="submit" class="btn btn-primary">Login</button>
-                <a href="#" class="btn btn-warning" style="color:white;">Register</a>
+                <a href="<?php echo base_url('login/buatAkunPenduduk')?>" class="btn btn-warning" style="color:white;">Register</a>
               </form>
 
             </div>

@@ -17,6 +17,7 @@ class Overview extends CI_Controller {
 	public function index()
 	{
 		$data['nama2'] = $this->session->userdata('user');
+		$data['idUser'] = $this->session->userdata('id');
 		$this->load->view('admin/overview', $data);
 	}
 

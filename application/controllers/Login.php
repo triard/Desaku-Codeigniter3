@@ -29,7 +29,7 @@ class Login extends CI_Controller
 	public function proses_login()
 	{
 		$username = htmlspecialchars($this->input->post('username'));
-		$password = htmlspecialchars($this->input->post('password'));
+		$password = htmlspecialchars(md5($this->input->post('password')));
 
 		$cek_login = $this->login_model->login($username, $password);
 
@@ -61,7 +61,7 @@ class Login extends CI_Controller
 	public function proses_login_penduduk()
 	{
 		$username = htmlspecialchars($this->input->post('username'));
-		$password = htmlspecialchars($this->input->post('password'));
+		$password = htmlspecialchars(md5($this->input->post('password')));
 
 		$cek_login = $this->login_model->login_penduduk($username, $password);
 
@@ -99,6 +99,48 @@ class Login extends CI_Controller
 	}
 
 	public function buatAkunPenduduk(){
+		$this->load->view('login/register_penduduk');
+	}
+
+	public function buatAkunUser(){
+		$user = $this->login_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($user->rules());
+
+        if ($validation->run()) {
+            $user-> registrasi_user();
+			$this->session->set_flashdata('success', 'Berhasil disimpan');
+			redirect('Login/');
+        }
+		$this->load->view('login/register_user');
+	}
+
+	public function view_profile_user($id){
+		$data['title'] = 'Desaku | Profil User';
+		$data['nama2'] = $this->session->userdata('user');
+		$data['idUser'] = $this->session->userdata('id');
+        $data['profile'] = $this->login_model->getById($id);
+        $this->load->view('admin/profile_user', $data);
+	}
+
+	public function edit_user($id = null)
+	{
+		$data['nama2'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
+		if (!isset($id)) redirect('Login/view_profile_user');
+	   
+		$user = $this->login_model;
+		$validation = $this->form_validation;
+		$validation->set_rules($user->rules());
+
+		if ($validation->run()) {
+			$user->update_user();
+			$this->session->set_flashdata('success', 'Berhasil disimpan');
+		}
+
+		$data["profile"] = $user->getById($id);
+		if (!$data["profile"]) show_404();
 		
+		$this->load->view("admin/profile_user_edit", $data);
 	}
 }
