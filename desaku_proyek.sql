@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 31 Mar 2020 pada 08.12
+-- Waktu pembuatan: 01 Apr 2020 pada 13.04
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.3
 
@@ -30,10 +30,11 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `agenda` (
   `id` int(11) NOT NULL,
-  `agenda` varchar(50) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `agenda` varchar(100) NOT NULL,
   `tempat` varchar(50) NOT NULL,
-  `jam` time NOT NULL,
-  `tanggal` date NOT NULL
+  `tanggal` date NOT NULL,
+  `jam` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -45,14 +46,13 @@ CREATE TABLE `agenda` (
 CREATE TABLE `artikel` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `judul` varchar(100) NOT NULL,
-  `gambar_judul` varchar(30) NOT NULL,
-  `isi` text NOT NULL,
-  `gambar1` varchar(30) NOT NULL,
-  `gambar2` varchar(30) NOT NULL,
-  `gambar3` varchar(30) NOT NULL,
+  `judul` varchar(50) NOT NULL,
+  `gambar_judul` varchar(50) NOT NULL,
+  `gambar1` varchar(50) NOT NULL,
+  `gambar2` varchar(50) NOT NULL,
+  `gambar3` varchar(50) NOT NULL,
   `tgl_upload` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -62,11 +62,11 @@ CREATE TABLE `artikel` (
 
 CREATE TABLE `detail_alamat` (
   `id` int(11) NOT NULL,
-  `jalan` varchar(60) NOT NULL,
-  `rt` varchar(2) NOT NULL,
-  `rw` varchar(2) NOT NULL,
+  `jalan` varchar(50) NOT NULL,
+  `rt` varchar(3) NOT NULL,
+  `rw` varchar(3) NOT NULL,
   `nomor` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ CREATE TABLE `detail_alamat` (
 CREATE TABLE `detail_surat` (
   `id` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `detail_surat`
@@ -101,22 +101,21 @@ INSERT INTO `detail_surat` (`id`, `nama`) VALUES
 --
 
 CREATE TABLE `penduduk` (
-  `id` int(11) NOT NULL,
+  `nik` char(20) NOT NULL,
   `id_alamat` int(11) NOT NULL,
-  `nik` int(16) NOT NULL,
-  `nama` int(11) NOT NULL,
-  `status` enum('Hidup','Mati') NOT NULL,
-  `nomor_kk` varchar(25) NOT NULL,
-  `jenis_kelamin` enum('LAKI-LAKI','PEREMPUAN') NOT NULL,
-  `agama` enum('Islam','Buddha','Hindu','Kristen','Konghucu','Katolik') NOT NULL,
-  `status_penduduk` enum('Tetap','Tidak Tetap','Pendantang') NOT NULL,
-  `tempat_lahir` varchar(30) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `status` enum('Hidup','Mati') NOT NULL DEFAULT 'Hidup',
+  `nomor_kk` varchar(20) NOT NULL,
+  `jenis_kelamin` enum('Laki-Laki','Perempuan') NOT NULL DEFAULT 'Laki-Laki',
+  `agama` enum('Islam','Kristen Protestan','Kristen Katolik','Budha','Hindu','Konghucu','dll') NOT NULL DEFAULT 'Islam',
+  `status_penduduk` enum('Tetap','Tidak Tetap','Pendatang') NOT NULL DEFAULT 'Tetap',
+  `tempat_lahir` varchar(50) NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `pendidikan` enum('Tidak Sekolah','SD','SMP','SMP','SMA','S1','S2','S3','S4','D1','D2','D3','D4') NOT NULL,
+  `pendidikan` enum('Tidak Sekolah','SD','SMP','SMP','SMA','S1','S2','S3','S4','D1','D2','D3','D4') NOT NULL DEFAULT 'Tidak Sekolah',
   `pekerjaan` varchar(20) NOT NULL,
-  `status_kawin` enum('Kawin','Belum Kawin') NOT NULL,
-  `foto` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status_kawin` enum('Kawin','Belum Kawin') NOT NULL DEFAULT 'Belum Kawin',
+  `foto` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -126,8 +125,9 @@ CREATE TABLE `penduduk` (
 
 CREATE TABLE `penduduk_login` (
   `id` int(11) NOT NULL,
-  `username` int(16) NOT NULL,
-  `password` varchar(50) NOT NULL
+  `username` char(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `jenis_user` enum('Penduduk') NOT NULL DEFAULT 'Penduduk'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -138,9 +138,9 @@ CREATE TABLE `penduduk_login` (
 
 CREATE TABLE `pengaduan` (
   `id` int(11) NOT NULL,
-  `id_penduduk` int(11) NOT NULL,
+  `nik` char(20) NOT NULL,
   `perihal` varchar(50) NOT NULL,
-  `isi` varchar(250) NOT NULL,
+  `isi` text NOT NULL,
   `tanggal` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -152,7 +152,7 @@ CREATE TABLE `pengaduan` (
 
 CREATE TABLE `struktur_organisasi` (
   `id` int(11) NOT NULL,
-  `id_penduduk` int(11) NOT NULL,
+  `id_penduduk` char(20) NOT NULL DEFAULT '',
   `jabatan` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -165,11 +165,11 @@ CREATE TABLE `struktur_organisasi` (
 CREATE TABLE `surat` (
   `id` int(11) NOT NULL,
   `id_detail_surat` int(11) NOT NULL,
-  `id_pend` int(16) NOT NULL,
+  `nik` char(20) NOT NULL,
   `isi` text NOT NULL,
-  `tgl_permohonan` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tgl_permohonan` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` enum('Proses','Dapat diambil','Gagal') NOT NULL DEFAULT 'Proses'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -179,21 +179,14 @@ CREATE TABLE `surat` (
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `username` varchar(30) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `jenis_user` enum('Admin','Sekretaris','Redaksi','Penduduk') NOT NULL,
-  `email` varchar(40) NOT NULL,
-  `alamat` varchar(60) NOT NULL,
-  `foto` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `jenis_user`, `email`, `alamat`, `foto`) VALUES
-(1, 'admin', 'admin', 'Admin', 'admin@app.id', 'sutarjo', ''),
-(2, 'tri', 'tri', 'Penduduk', 'tri@app.id', 'wuswus', '');
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `jenis_user` enum('Admin','Sekretaris') NOT NULL DEFAULT 'Admin',
+  `email` varchar(30) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `alamat` varchar(50) NOT NULL,
+  `foto` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -202,19 +195,19 @@ INSERT INTO `user` (`id`, `username`, `password`, `jenis_user`, `email`, `alamat
 --
 
 CREATE TABLE `visi_misi` (
-  `id` int(1) NOT NULL,
-  `visi` text NOT NULL DEFAULT '',
-  `misi1` text NOT NULL DEFAULT '',
-  `misi2` text NOT NULL DEFAULT '',
-  `misi3` text NOT NULL DEFAULT '',
-  `misi4` text DEFAULT '',
-  `misi5` text DEFAULT '',
-  `proker1` text NOT NULL DEFAULT '',
-  `proker2` text NOT NULL DEFAULT '',
-  `proker3` text NOT NULL DEFAULT '',
-  `proker4` text DEFAULT '',
-  `proker5` text DEFAULT '',
-  `proker6` text DEFAULT ''
+  `id` int(11) NOT NULL,
+  `visi` text DEFAULT NULL,
+  `misi1` text DEFAULT NULL,
+  `misi2` text DEFAULT NULL,
+  `misi3` text DEFAULT NULL,
+  `misi4` text DEFAULT NULL,
+  `misi5` text DEFAULT NULL,
+  `proker1` text DEFAULT NULL,
+  `proker2` text DEFAULT NULL,
+  `proker3` text DEFAULT NULL,
+  `proker4` text DEFAULT NULL,
+  `proker5` text DEFAULT NULL,
+  `proker6` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -225,66 +218,63 @@ CREATE TABLE `visi_misi` (
 -- Indeks untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_agenda_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`),
-  ADD KEY `id_2` (`id`),
-  ADD KEY `id_user` (`id_user`);
+  ADD KEY `FK_artikel_user` (`id_user`);
 
 --
 -- Indeks untuk tabel `detail_alamat`
 --
 ALTER TABLE `detail_alamat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `detail_surat`
 --
 ALTER TABLE `detail_surat`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `nik` (`nik`),
-  ADD KEY `id_alamat` (`id_alamat`);
+  ADD PRIMARY KEY (`nik`),
+  ADD KEY `FK_penduduk_detail_alamat` (`id_alamat`);
 
 --
 -- Indeks untuk tabel `penduduk_login`
 --
 ALTER TABLE `penduduk_login`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`id`),
   ADD KEY `FK_penduduk_login_penduduk` (`username`);
 
 --
 -- Indeks untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK__penduduk` (`nik`);
 
 --
 -- Indeks untuk tabel `struktur_organisasi`
 --
 ALTER TABLE `struktur_organisasi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_struktur_organisasi_penduduk` (`id_penduduk`);
 
 --
 -- Indeks untuk tabel `surat`
 --
 ALTER TABLE `surat`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_detail_surat` (`id_detail_surat`,`id_pend`),
-  ADD KEY `id_pend` (`id_pend`);
+  ADD KEY `FK_surat_detail_surat` (`id_detail_surat`),
+  ADD KEY `FK_surat_penduduk` (`nik`);
 
 --
 -- Indeks untuk tabel `user`
@@ -306,7 +296,7 @@ ALTER TABLE `visi_misi`
 -- AUTO_INCREMENT untuk tabel `agenda`
 --
 ALTER TABLE `agenda`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `artikel`
@@ -327,12 +317,6 @@ ALTER TABLE `detail_surat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `penduduk`
---
-ALTER TABLE `penduduk`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
 -- AUTO_INCREMENT untuk tabel `penduduk_login`
 --
 ALTER TABLE `penduduk_login`
@@ -342,7 +326,7 @@ ALTER TABLE `penduduk_login`
 -- AUTO_INCREMENT untuk tabel `pengaduan`
 --
 ALTER TABLE `pengaduan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `struktur_organisasi`
@@ -354,42 +338,66 @@ ALTER TABLE `struktur_organisasi`
 -- AUTO_INCREMENT untuk tabel `surat`
 --
 ALTER TABLE `surat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `visi_misi`
+--
+ALTER TABLE `visi_misi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
+-- Ketidakleluasaan untuk tabel `agenda`
+--
+ALTER TABLE `agenda`
+  ADD CONSTRAINT `FK_agenda_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Ketidakleluasaan untuk tabel `artikel`
 --
 ALTER TABLE `artikel`
-  ADD CONSTRAINT `artikel_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_artikel_user` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `penduduk`
 --
 ALTER TABLE `penduduk`
-  ADD CONSTRAINT `penduduk_ibfk_1` FOREIGN KEY (`id_alamat`) REFERENCES `detail_alamat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_penduduk_detail_alamat` FOREIGN KEY (`id_alamat`) REFERENCES `detail_alamat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `penduduk_login`
 --
 ALTER TABLE `penduduk_login`
-  ADD CONSTRAINT `FK_penduduk_login_penduduk` FOREIGN KEY (`username`) REFERENCES `penduduk` (`nik`);
+  ADD CONSTRAINT `FK_penduduk_login_penduduk` FOREIGN KEY (`username`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `pengaduan`
+--
+ALTER TABLE `pengaduan`
+  ADD CONSTRAINT `FK__penduduk` FOREIGN KEY (`nik`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `struktur_organisasi`
+--
+ALTER TABLE `struktur_organisasi`
+  ADD CONSTRAINT `FK_struktur_organisasi_penduduk` FOREIGN KEY (`id_penduduk`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `surat`
 --
 ALTER TABLE `surat`
-  ADD CONSTRAINT `surat_ibfk_1` FOREIGN KEY (`id_detail_surat`) REFERENCES `detail_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `surat_ibfk_2` FOREIGN KEY (`id_pend`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_surat_detail_surat` FOREIGN KEY (`id_detail_surat`) REFERENCES `detail_surat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_surat_penduduk` FOREIGN KEY (`nik`) REFERENCES `penduduk` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
