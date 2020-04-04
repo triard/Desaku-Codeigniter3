@@ -28,18 +28,22 @@
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
                 <div class="col-md-5 text-center">
-                    <form action="" method="POST">
+                    <form action="<?php echo base_url('Login/buatAkunPenduduk') ?>" method="POST">
                     <h1 class="h2">Create Account</h1>
-                    <p class="lead text-light-gray">Start doing things for free, Sign up now</p>
-                                    <hr>
+                    <p class="lead text-light-gray">Buat akun Anda untuk mempermudah urusan anda</p>
+                    <hr>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Email Address..">
+                        <input type="text" name="nik" id="nik" class="form-control" placeholder="Nomer NIK anda..">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Password..">
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="No Telp Anda..">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="password" id="password" placeholder="Password..">
                         <p class="text-muted text-left"><small>Your password should be at least 10 characters</small></p>
                     </div>
                     <button class="btn btn-primary btn-block btn-lg">Create Account</button>
+                    <a href="<?php echo base_url('/')?>" class="btn btn-danger btn-block btn-lg">Cancel</a>
                     <p class=" text-muted"><small>By clicking 'Create Account' you agree to our <a href="#">Terms of Use</a></small></p>
                      </form>
                 </div>

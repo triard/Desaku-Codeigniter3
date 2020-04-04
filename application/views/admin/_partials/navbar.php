@@ -23,7 +23,7 @@
                 <i class="fas fa-user-circle fa-fw"></i> <?php echo $nama2 ?>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">Profil</a>
+                <a class="dropdown-item" href="<?= base_url(); ?>Login/view_profile_user/<?php echo $idUser ?>">Profil</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">Logout</a>
             </div>
