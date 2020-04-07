@@ -28,10 +28,6 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $pengaduanDetail['nama']; ?></h5>
                     <p class="card-text">
-                        <label for="">NIK</label>
-                        <br><?php echo $pengaduanDetail['nik']; ?>
-                    </p>
-                    <p class="card-text">
                         <label for="">Perihal</label>
                         <br><?php echo $pengaduanDetail['perihal']; ?>
                     </p>

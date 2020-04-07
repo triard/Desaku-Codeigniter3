@@ -20,7 +20,7 @@
 
         <div style="overflow-y: scroll;overflow-x: scroll; width: 100%;border: 1px black dotted;">        
 
-        <table class="table">
+        <table class="table data">
             <thead>
                 <tr>
                     <th>Nama Pengadu</th>
@@ -48,5 +48,10 @@
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
     <?php $this->load->view("admin/_partials/modal.php") ?>
     <?php $this->load->view("admin/_partials/js.php") ?>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$('.data').DataTable();
+	});
+</script>
 </body>
 </html>

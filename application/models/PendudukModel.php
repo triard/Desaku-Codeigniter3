@@ -10,8 +10,8 @@ class PendudukModel extends CI_Model
     public function tambahPengaduan()
     {
         $data = array(
-            "nama" => $this->input->post('nama', true),
-            "nik" => $this->input->post('nik', true),
+            "perihal" => $this->input->post('perihal', true),
+            "nik_pengadu" => $this->input->post('nik', true),
             "isi" => $this->input->post('isi', true)
 
 
@@ -19,15 +19,24 @@ class PendudukModel extends CI_Model
         $this->db->insert('pengaduan', $data);
     }
 
+
     public function getPengaduan()
     {
-        return $this->db->get('pengaduan')->result_array();
+        $this->db->select('*');
+        $this->db->from('pengaduan as p');
+        $this->db->join('penduduk', 'p.nik_pengadu = penduduk.nik');
+        return $this->db->get()->result_array();
     }
 
     public function getPengaduanId($id)
     {
-        return $this->db->get_where($this->_pengaduan, ['id' => $id])->row_array();
+        $this->db->select('*');
+        $this->db->from('pengaduan as p');
+        $this->db->join('penduduk', 'p.nik_pengadu = penduduk.nik');
+        return $this->db->get_where($this->_pengaduan, ['p.id' => $id])->row_array();
     }
+
+    
 
 }
 

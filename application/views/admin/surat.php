@@ -19,12 +19,12 @@
 
         <div style="overflow-y: scroll;overflow-x: scroll; width: 100%;border: 1px black dotted;">        
 
-        <table class="table">
+        <table class="table data">
             <thead>
                 <tr>
                     <th>Nama Pemohon</th>
                     <th>Tanggal Pengaduan</th>
-                    <th>Category</th>
+                    <th>Perihal</th>
                     <th>Status</th>
                     <th>Detail</th>
                 </tr>
@@ -34,9 +34,9 @@
                 <tr>
                     <td><?= $st["nama"] ?></td>
                     <td><?= $st["tgl_permohonan"] ?></td>
-                    <td><?= $st["category"] ?></td>
-                    <td><?= $st["status"] ?></td>
-                    <td> <a class="btn btn-primary" href="<?php echo base_url('admin/SuratOnlineAdmin/surat_detail/'. $st['id']) ?>">detail</a></td>
+                    <td><?= $st["nama_surat"] ?></td>
+                    <td><?= $st["status_surat"] ?></td>
+                    <td> <a class="btn btn-primary" href="<?php echo base_url('admin/SuratOnlineAdmin/surat_detail/'. $st['id_surat']) ?>">detail</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -49,5 +49,10 @@
     <?php $this->load->view("admin/_partials/scrolltop.php") ?>
     <?php $this->load->view("admin/_partials/modal.php") ?>
     <?php $this->load->view("admin/_partials/js.php") ?>
+    <script type="text/javascript">
+	$(document).ready(function(){
+		$('.data').DataTable();
+	});
+</script>
 </body>
 </html>

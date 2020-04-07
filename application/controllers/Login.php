@@ -95,12 +95,24 @@ class Login extends CI_Controller
 	{
 	  $this->session->userdata('Penduduk');
 	  $this->session->sess_destroy();
-	  redirect('Welcome', 'refresh');
+	  $this->session->set_flashdata('success', 'Berhasil Logout');
+	  redirect('Welcome');
 	}
 
 	public function buatAkunPenduduk(){
+		$penduduk = $this->login_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($penduduk->rules());
+
+        if ($validation->run()) {
+            $penduduk-> registrasi_penduduk();
+			$this->session->set_flashdata('success', 'Registrasi berhasil');
+			redirect('/');
+        }
 		$this->load->view('login/register_penduduk');
+
 	}
+
 
 	public function buatAkunUser(){
 		$user = $this->login_model;
@@ -122,6 +134,8 @@ class Login extends CI_Controller
         $data['profile'] = $this->login_model->getById($id);
         $this->load->view('admin/profile_user', $data);
 	}
+
+
 
 	public function edit_user($id = null)
 	{

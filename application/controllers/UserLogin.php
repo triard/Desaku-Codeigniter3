@@ -9,6 +9,7 @@ class UserLogin extends CI_Controller
 		parent::__construct();
 		$this->load->model('PendudukModel');
 		$this->load->model('SuratModel');
+		$this->load->model('login_model');
 		$this->load->library('session');
 		$this->load->library('form_validation');
 
@@ -18,16 +19,28 @@ class UserLogin extends CI_Controller
 		}
 	}
 
+
 	public function index()
 	{
-		$sessp = $this->session->userdata('user');
-		// var_dump($sessp);
 		$data['title'] = "Desaku | Beranda";
+		$data['nama2'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
+//        $data['profile'] = $this->login_model->getByIdPenduduk($id);
 		$this->load->view('usersLogin/index', $data);
+	}
+
+	public function view_profil($id){
+		$data['title'] = "Desaku | Profil";
+		$data['nama2'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
+        $data['profile'] = $this->login_model->getByIdPenduduk($id);
+		$this->load->view('usersLogin/profil', $data);
 	}
 
 	public function surat_online_view()
 	{
+		$data['nama2'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
 		$data['title'] = "Desaku | Surat Online";
 		$data['surat'] = $this->SuratModel->getNameSurat();
 		$this->load->view('usersLogin/surat_online.php', $data);
@@ -36,9 +49,9 @@ class UserLogin extends CI_Controller
 
 	public function surat_online_add_data()
 	{
-		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$data['coba'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
 		$this->form_validation->set_rules('nik', 'nik', 'trim|required');
-		$this->form_validation->set_rules('no_telp', 'no_telp', 'trim|required');
 		$this->form_validation->set_rules('category', 'category', 'trim|required');
 		$this->form_validation->set_rules('isi', 'isi', 'trim|required');
 		if ($this->form_validation->run() == false) {
@@ -53,12 +66,12 @@ class UserLogin extends CI_Controller
 
 	public function pengaduan()
 	{
-		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
-		$this->form_validation->set_rules('nik', 'nik', 'trim|required');
+		$data['coba'] = $this->session->userdata('username');
+		$data['idUser'] = $this->session->userdata('id');
+		$this->form_validation->set_rules('perihal', 'perihal', 'trim|required');
 		$this->form_validation->set_rules('isi', 'isi', 'trim|required');
 
 		if ($this->form_validation->run() == false) {
-			$data['nama2'] = $this->session->userdata('user');
 			$data['title'] = "Desaku | Pengaduan";
 			$this->load->view('usersLogin/pengaduan', $data);
 		} else {

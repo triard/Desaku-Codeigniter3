@@ -127,31 +127,7 @@
       </table>
       </div>
     </div>
-    <div class="col-sm-4">
-      <h5>Wilayah Desa</h5>
-      <div class="fakeimg">
-        <a href="https://www.google.com/maps/place/Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3073796,111.9285504,14z/data=!3m1!4b1!4m5!3m4!1s0x2e782bf8b25b4017:0xc68196dfe06bf16a!8m2!3d-7.3003622!4d111.9492682" target="blank" 
-        class="responsive"><img src="<?php echo base_url('assets/trate.png'); ?>" alt=""></a>
-      </div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3>Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <hr class="d-sm-none">
-    </div>
+    <?php $this->load->view("usersLogin/template/sidebar.php") ?>
   </div>
 </div>
 

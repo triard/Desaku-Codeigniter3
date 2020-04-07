@@ -17,7 +17,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-        $data ['title'] = 'Desaku|| Beranda';
+        $data ['title'] = 'Beranda|| Desaku';
         $data['agenda'] = $this->agenda_model->get_agenda();     
         $data['corona'] = json_decode($this->curl->simple_get($this->API.'/indonesia'));
         $this->load->view('welcome_message',$data);

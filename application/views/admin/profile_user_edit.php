@@ -17,11 +17,11 @@
 
     <div class="container-fluid">
 
-    <?php if ($this->session->flashdata('success')): ?>
+            <?php if ($this->session->flashdata('success')): ?>
 				<div class="alert alert-success" role="alert">
 					<?php echo $this->session->flashdata('success'); ?>
 				</div>
-                <?php endif; ?>
+            <?php endif; ?>
                 
                 <a href="<?= base_url(); ?>Login/view_profile_user/<?php echo $idUser ?> "><i class="fas fa-arrow-left" style="color: red"></i> Back</a>
 

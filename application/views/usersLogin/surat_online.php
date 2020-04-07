@@ -12,8 +12,6 @@
                     <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>nik</th>
-                            <th>No_telp</th>
                             <th>category</th>
                             <th>tanggal permohonan</th>
                             <th>status</th>
@@ -23,11 +21,9 @@
                 <?php foreach ($surat as $st) : ?>
                     <tr>
                     <td><?= $st["nama"] ?></td>
-                    <td><?= $st["nik"] ?></td>
-                    <td><?= $st["no_telp"] ?></td>
-                    <td><?= $st["category"] ?></td>
+                    <td><?= $st["nama_surat"] ?></td>
                     <td><?= $st["tgl_permohonan"] ?></td>
-                    <td><?= $st["status"] ?></td>
+                    <td><?= $st["status_surat"] ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

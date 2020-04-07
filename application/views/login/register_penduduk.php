@@ -29,18 +29,18 @@
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
                 <div class="col-md-5 text-center">
                     <form action="<?php echo base_url('Login/buatAkunPenduduk') ?>" method="POST">
-                    <h1 class="h2">Create Account</h1>
-                    <p class="lead text-light-gray">Buat akun Anda untuk mempermudah urusan anda</p>
+                    <h1 class="h2">Membuat akun penduduk</h1>
+                    <p class="lead text-light-gray">satu NIK satu akun okay</p>
                     <hr>
                     <div class="form-group">
-                        <input type="text" name="nik" id="nik" class="form-control" placeholder="Nomer NIK anda..">
+                        <input type="text" size="16" maxlength="16" name="username" id="username" class="form-control" placeholder="Nomer NIK anda..">
                     </div>
                     <div class="form-group">
-                        <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="No Telp Anda..">
+                        <input type="text" size="13" maxlength="12" name="no_telp" id="no_telp" class="form-control" placeholder="No Telp Anda..">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" name="password" id="password" placeholder="Password..">
-                        <p class="text-muted text-left"><small>Your password should be at least 10 characters</small></p>
+                        <input type="password" class="form-control" size="20" maxlength="20" name="password" id="password" placeholder="Password..">
+                        <p class="text-muted text-left"><small>minimal 10 characters</small></p>
                     </div>
                     <button class="btn btn-primary btn-block btn-lg">Create Account</button>
                     <a href="<?php echo base_url('/')?>" class="btn btn-danger btn-block btn-lg">Cancel</a>

@@ -10,15 +10,12 @@
             <?php endif; ?>
             <h6 class="title">Silahkan lengkapi semua isian sesuai dengan data yang diperlukan</h5>
                 <form action="" method="post">
+                    <input type="hidden" name="nik" value="<?= $coba ?>">
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="nama">Nama Lengkap:</label>
-                                <input type="name" class="form-control" value="<?= $nama2 ?>" id="nama" name="nama" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Nik:</label>
-                                <input type="name" class="form-control" placeholder="Enter email/no telp*" id="nik" name="nik">
+                                <label for="perihal">Perihal:</label>
+                                <input type="text" class="form-control"  id="perihal" name="perihal">
                             </div>
                         </div>
                     </div>

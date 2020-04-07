@@ -23,40 +23,49 @@ class SuratModel extends CI_Model
     public function tambahSurat()
     {
         $data = array(
-            "nama" => $this->input->post('nama', true),
-            "nik" => $this->input->post('nik', true),
-            "no_telp" => $this->input->post('no_telp', true),
-            "category" => $this->input->post('category', true),
+            "nik_pemohon" => $this->input->post('nik', true),
+            "id_detail_surat" => $this->input->post('category', true),
             "isi" => $this->input->post('isi', true)
-
-
         );
         $this->db->insert('surat', $data);
     }
 
     public function getNameSurat()
     {
-        $this->db->where('nama', $this->session->userdata('user'));
-        $this->db->order_by('id', 'desc');
-        return $this->db->get('surat')->result_array();
+        $this->db->select('*');
+        $this->db->from('surat as s');
+        $this->db->join('penduduk', 's.nik_pemohon = penduduk.nik');
+        $this->db->join('detail_surat as ds', 's.id_surat=ds.id');
+        $this->db->where('nik_pemohon', $this->session->userdata('username'));
+        $this->db->order_by('id_surat', 'desc');
+        return $this->db->get()->result_array();
     }
+
 
     public function getSurat()
     {
-        return $this->db->get('surat')->result_array();
+        $this->db->select('*');
+        $this->db->from('surat as s');
+        $this->db->join('penduduk', 's.nik_pemohon = penduduk.nik');
+        $this->db->join('detail_surat as ds', 's.id_surat=ds.id');
+        return $this->db->get()->result_array();
     }
 
 
     public function getSuratId($id)
     {
-        return $this->db->get_where($this->_surat, ['id' => $id])->row_array();
+        $this->db->select('*');
+        $this->db->from('surat as s');
+        $this->db->join('penduduk', 's.nik_pemohon = penduduk.nik');
+        $this->db->join('detail_surat as ds', 's.id_surat=ds.id');
+        return $this->db->get_where($this->_surat, ['s.id_surat' => $id])->row_array();
     }
 
     public function updateStatusSurat(){
         $post = $this->input->post();
-        $this->id    = $post["id"];
-        $this->status=$post["status"];
-        $this->db->update($this->_surat, $this, array('id'=>$post['id']));
+        $this->id_surat    = $post["id"];
+        $this->status_surat=$post["status"];
+        $this->db->update($this->_surat, $this, array('id_surat'=>$post['id']));
     }
 
     

@@ -17,6 +17,7 @@ class Pengaduan extends CI_Controller
     public function index()
     {
         $data['nama2'] = $this->session->userdata('user');
+        $data['idUser'] = $this->session->userdata('id');
         $data['title'] = "Daftar Pengaduan";
         $data['pengaduan'] = $this->PendudukModel->getPengaduan();
         $this->load->view('admin/pengaduan', $data);
@@ -26,6 +27,7 @@ class Pengaduan extends CI_Controller
 	public function pengaduan_detail($id)
 	{
         $data['nama2'] = $this->session->userdata('user');
+        $data['idUser'] = $this->session->userdata('id');
 		$data['title'] = "Desaku | Pengaduan Detail";
 		$data['pengaduanDetail'] = $this->PendudukModel->getPengaduanId($id);
 		$this->load->view('admin/pengaduan_detail', $data);
