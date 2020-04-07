@@ -16,6 +16,7 @@ class Agenda extends CI_Controller {
 	public function index()
 	{
         $data ['title'] = 'Desaku|| Agenda';
+        $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
         $data['agenda'] = $this->agenda_model->getAllagenda();     
         $this->load->view('admin/agenda',$data);
@@ -46,6 +47,7 @@ class Agenda extends CI_Controller {
 
         public function edit_agenda($id = null)
         {
+            $data['title'] = 'Desaku | Edit Agenda';
             $data['nama2'] = $this->session->userdata('username');
             $data['idUser'] = $this->session->userdata('id');
             if (!isset($id)) redirect('admin/agenda');

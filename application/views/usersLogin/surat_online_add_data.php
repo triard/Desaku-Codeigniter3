@@ -5,36 +5,20 @@
             <div class="card-body">
                 <h6 class="title">Silahkan lengkapi semua isian sesuai dengan data yang diperlukan</h5>
                 <form action="" method="post">
-                 <div class="row">
+                    <input type="hidden" name="nik" value="<?php echo $coba ?>">
                     <div class="col-6">
-                        <div class="form-group">
-                        <label for="nama">Nama Lengkap:</label>
-                        <input type="text" class="form-control" placeholder="Enter name*" id="nama" name="nama" value="<?= $nama2 ?>" readonly>
-                        </div>
-                        <div class="form-group">
-                        <label for="no_telp">Email/No telp:</label>
-                        <input type="text" class="form-control" placeholder="Enter email/no telp*" id="no_telp" name="no_telp">
-                        </div>
-                        
-                    </div>
-                    <div class="col-6">
-                    <div class="form-group">
-                        <label for="nik">NIK:</label>
-                        <input type="number" class="form-control" placeholder="Enter NIK*" id="nik" name="nik">
-                        </div>
-
                         <div class=" form-group">
                             <label for="category">Pilih surat</label>
                             <select id="category" class="form-control" name="category" >
-                            <option>Surat Keterangan Usaha</option>
-                            <option>Surat Keterangan Tidak Mampu</option>
-                            <option>Surat Keterangan Miskin</option>
-                            <option>Surat Keterangan Belum Pernah Menikah</option>
-                            <option>Surat Keterangan Kelahiran</option>
-                            <option>Surat Keterangan Kematian</option>
-                            <option>Surat Keterangan Beda Nama</option>
-                            <option>Surat Keterangan Penghasilan</option>
-                            <option>Surat Keterangan Harga Tanah</option>
+                            <option value="1">Surat Keterangan Usaha</option>
+                            <option value="2">Surat Keterangan Tidak Mampu</option>
+                            <option value="3">Surat Keterangan Miskin</option>
+                            <option value="4">Surat Keterangan Belum Pernah Menikah</option>
+                            <option value="5">Surat Keterangan Kelahiran</option>
+                            <option value="6">Surat Keterangan Kematian</option>
+                            <option value="7">Surat Keterangan Beda Nama</option>
+                            <option value="8">Surat Keterangan Penghasilan</option>
+                            <option value="9">Surat Keterangan Harga Tanah</option>
                             </select>
                         </div>
                     </div>

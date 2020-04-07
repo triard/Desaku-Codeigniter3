@@ -17,9 +17,10 @@ class SuratOnlineAdmin extends CI_Controller {
 
 	public function index()
     {
-        $data['nama2'] = $this->session->userdata('user');
-        $data['title'] = "Daftar Surat";
-        $data['surat'] = $this->SuratModel->getSurat();
+		$data['nama2'] = $this->session->userdata('user');
+		$data['idUser'] = $this->session->userdata('id');
+        $data['title'] = "Desaku | Daftar Surat";
+        $data['surat'] =  $this->SuratModel->getSurat();
         $this->load->view('admin/surat', $data);
     }
 
@@ -27,6 +28,7 @@ class SuratOnlineAdmin extends CI_Controller {
 	public function surat_detail($id)
 	{
 		$data['title'] = 'Surat Detail';
+		$data['idUser'] = $this->session->userdata('id');
 		$data['nama2'] = $this->session->userdata('user');
 		$data['suratDetail']=['Proses','Dapat diambil','Gagal'];
 		$validation = $this->form_validation;

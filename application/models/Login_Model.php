@@ -26,22 +26,9 @@ class Login_Model extends CI_Model
             'label' => 'password',
             'rules' => 'required'],
             
-            ['field' => 'jenis_user',
-            'label' => 'jenis_user',
-            'rules' => 'required'],
-
-
-            ['field' => 'email',
-            'label' => 'email',
-            'rules' => 'required'],
-
             ['field' => 'no_telp',
             'label' => 'no_telp',
-            'rules' => 'required|numeric'],
-
-            ['field' => 'alamat',
-            'label' => 'alamat',
-            'rules' => 'required']
+            'rules' => 'required|numeric']
         ];
     }
 
@@ -80,6 +67,12 @@ class Login_Model extends CI_Model
         if ($query->num_rows() == 0) {
             return FALSE;
         } else {
+            foreach($query->result() as $login){
+                $sess_data['id'] = $login->id;
+                $sess_data['username'] = $login->username;
+                $sess_data['password'] = $login->password;
+                $this->session->set_userdata($sess_data) ;
+            }
             return $query->result();
         }
     }
@@ -88,6 +81,25 @@ class Login_Model extends CI_Model
     public function getById($id)
     {
         return $this->db->get_where($this->_user, ["id" => $id])->row();
+    }
+
+
+    public function getAllagenda()
+    {
+        $this->db->from('agenda');
+        $this->db->join('user', 'agenda.id_user = user.id');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getByIdPenduduk($id)
+    {
+
+        $this->db->select('*');
+        $this->db->from('penduduk_login as pl');
+        $this->db->join('penduduk', 'pl.username = penduduk.nik');
+        $this->db->join('detail_alamat as al', 'penduduk.id_alamat=al.id_alamat');
+        return $this->db->get_where($this->_penduduk, ["pl.id" => $id])->row();
     }
 
     public function registrasi_user()
@@ -103,14 +115,16 @@ class Login_Model extends CI_Model
             $this->db->insert($this->_user, $this);
     }
 
+
+
     	public function registrasi_penduduk()
     {
         $data=array(
             "username"=>$this->input->post("username"),
-            "password" => $this->input->post("password"),
+            "password" => md5($this->input->post("password")),
             "no_telp" => $this->input->post("no_telp")
         );
-        $this->db->insert($this->_penduduk, $data);
+        $cek = $this->db->insert($this->_penduduk, $data);
     }
 
 

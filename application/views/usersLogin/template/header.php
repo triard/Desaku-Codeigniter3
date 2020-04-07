@@ -27,11 +27,14 @@
       <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('UserLogin/pengaduan') ?>">Pengaduan</a>
       </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('UserLogin/feddback') ?>"></a>
+      </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url('UserLogin/feddback') ?>">Feedback</a>
+      <a class="nav-link" href="<?= base_url(); ?>UserLogin/view_profil/<?php echo $idUser ?>">Profil</a>
       </li>
     </ul>
-    <a class="form-inline my-2 my-lg-0" href="<?php echo base_url('#'); ?>">
+    <a class="form-inline my-2 my-lg-0" href="<?php echo base_url('Login/logoutPenduduk'); ?>">
     <button type="button" class="btn btn-danger">Logout</button>
     </a>
   </div>
