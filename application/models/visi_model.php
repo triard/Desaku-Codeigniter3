@@ -61,6 +61,17 @@ class visi_model extends CI_Model
         return $this->db->get_where($this->_table, ["id" => $id])->row();
     }
 
+    public function get()
+    {
+        $this->db->select('*');
+        $this->db->from('visi_misi');
+        $this->db->order_by('id','DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result();
+
+    }
+
     public function save()
     {
         $post = $this->input->post();
