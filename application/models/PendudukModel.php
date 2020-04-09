@@ -23,6 +23,7 @@ class PendudukModel extends CI_Model
     public $foto = "default.jpg";
 
 
+
     public function tambahPengaduan()
     {
         $data = array(

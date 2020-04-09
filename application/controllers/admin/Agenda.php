@@ -11,6 +11,9 @@ class Agenda extends CI_Controller {
         $this->load->library('session');
         $this->load->library('curl');
         $this->load->helper('url');
+        if($this->session->userdata('jenis_user')!="Admin"){
+			redirect('Login','refresh');
+		}
     }
 
 	public function index()
