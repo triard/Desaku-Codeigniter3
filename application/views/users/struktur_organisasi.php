@@ -88,41 +88,23 @@
             <tr>
               <th>Nama</th>
               <th>Jabatan</th>
+              <th>Foto</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Jonny Anwar</td>
-              <td>Kepala Desa</td>
-            </tr>
-            <tr>
-              <td>Nafiah</td>
-              <td>Sekretaris Desa</td>
-            </tr>
-            <tr>
-              <td>Hanafi</td>
-              <td>Kepala Urusan Pemerintahan</td>
-            </tr>
-            <tr>
-              <td>Rabu</td>
-              <td>Kepala Urusan Pembangunan</td>
-            </tr>
-            <tr>
-              <td>Mustakim</td>
-              <td>Kepala Urusan Kesra</td>
-            </tr>
-            <tr>
-              <td>Hamidah</td>
-              <td>Kepala Urusan Keuangan</td>
-            </tr>
-            <tr>
-              <td>Solikin</td>
-              <td>Kepala Urusan Trantib</td>
-            </tr>
-            <tr>
-              <td>Subhan</td>
-              <td>Kepala Urusan Umum</td>
-            </tr>
+          <?php foreach ($struktur as $s): ?>
+									<tr>
+										<td width="150">
+											<?php echo $s['nama'] ?>
+										</td>
+										<td>
+											<?php echo $s['jabatan'] ?>
+										</td>
+										<td>
+                                        <img src="<?php echo base_url('upload/foto-penduduk/'.$s['foto']) ?>" width="64" />
+										</td>
+									</tr>
+									<?php endforeach; ?>
           </tbody>
       </table>
       </div>

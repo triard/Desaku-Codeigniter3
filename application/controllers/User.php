@@ -6,6 +6,7 @@ class User extends CI_Controller {
 	function __construct() {
         parent::__construct();
 		$this->load->model('agenda_model');
+		$this->load->model('struktur_model');
 		$this->load->model('visi_model');
         $this->load->library('form_validation');
         $this->load->library('session');
@@ -35,6 +36,7 @@ class User extends CI_Controller {
 
 	public function struktur(){
 		$data['title'] = "Desaku | Struktur Organisasi";
+		$data["struktur"] = $this->struktur_model->getAll();
 		$data['agenda'] = $this->agenda_model->get_agenda();     
 		$this->load->view('users/struktur_organisasi', $data);
 	}
