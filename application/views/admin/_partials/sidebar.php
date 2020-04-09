@@ -39,8 +39,8 @@
             <span>Goverment</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/alamat') ?>">Visi & Misi</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/Pendataan') ?>">Pegawai</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/Visi') ?>">Visi & Misi</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/struktur') ?>">Struktur Organisasi</a>
         </div>
     </li>
 </ul>
