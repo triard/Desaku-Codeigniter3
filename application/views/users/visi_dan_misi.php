@@ -81,24 +81,30 @@
   <div class="row">
     <div class="col-sm-8">
     <br><br>
+    <?php foreach ($visi as $v) : ?> 
       <h2>Visi dan Misi Dan Program Kerja</h2>
       <p>Sebagaimana desa-desa yang lain, Desa Trate Kecamatan Sugihwaras juga memiliki Visi dan Misi bagi desanya serta program kerja desa. Berikut uraian visi dan misi serta program kerja Desa Trate Kecamatan Sugihwaras Kabupaten Bojonegoro.</p>
       <br>
       <h3><center>Visi</center></h3>
-      <p><b>“Terwujudnya Masyarakat Desa Trate sebagai Desa yang agamis, mandiri untuk mencapai masyarakat yang sehat, cerdas dan lebih sejahtera serta melayani masyarakat dengan sepenuh hati”.</b></p>
+      <p>"<b><?= $v->visi; ?></b>".</p>
       <br>
       <h3><center>Misi</center></h3>
-      <p>1. Memujudkan dan mengembangkan kegiatan keagamaan untuk menambah keimanan dan ketaqwaan kepada Tuhan Yang Maha Esa.</p>
-      <p>2. Mewujudkan dan mendorong terjadinya usaha-usaha kerukunan antar dan intern warga masyarakat yang disebabkan karena adanya perbedaan agama, keyakinan, organisasi dan lainnya dalam suasana saling menghargai dan menghormati.</p>
-      <p>3. Membangun dan meningkatkan hasil pertanian dengan jalan penataan pengairan, perbaikan jalan sawah / jalan usaha tani, pemupukan, dan pola tanam yang baik.</p>
+      <p>1. <?= $v->misi1; ?></p>
+      <p>2. <?= $v->misi2; ?></p>
+      <p>3. <?= $v->misi3; ?></p>
+      <p>4. <?= $v->misi4; ?></p>
+      <p>5.<?= $v->misi5; ?></p>
       <br>
       <h3><center>Program Kerja</center></h3>
-      <p>1. Peningkatan Pembangunan Infrastruktur yang Mendukung Perekonomian Desa</p>
-      <p>2. Peningkatan Kualitas Kesehatan Masyarakat</p>
-      <p>3. Pengembangan Pendidikan Bermutu dan Berkualitas</p>
-      <p>4. Peningkatan Pembangunan Ekonomi  dengan Mendorong Tumbuh dan Berkembangnya Pembangunan di Bidang Pertanian Dalam Arti Luas.</p>
-      <p>5. Peningkatan Tata Kelola Pemerintahan Yang Baik (Good Governance)</p>
+      <p>1. <?= $v->proker1; ?></p>
+      <p>2. <?= $v->proker2; ?></p>
+      <p>3. <?= $v->proker3; ?></p>
+      <p>4. <?= $v->proker4; ?></p>
+      <p>5. <?= $v->proker5; ?></p>
+      <p>6. <?= $v->proker6; ?></p>
       <br>
+      <?php endforeach; ?>
+
     </div>
     <?php $this->load->view("usersLogin/template/sidebar.php") ?>
   </div>

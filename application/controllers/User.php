@@ -5,7 +5,8 @@ class User extends CI_Controller {
 
 	function __construct() {
         parent::__construct();
-        $this->load->model('agenda_model');
+		$this->load->model('agenda_model');
+		$this->load->model('visi_model');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('curl');
@@ -27,7 +28,8 @@ class User extends CI_Controller {
 
 	public function visi(){
 		$data['title'] = "Desaku | Visi, Misi, dan Program Kerja";
-		$data['agenda'] = $this->agenda_model->get_agenda();     
+		$data['agenda'] = $this->agenda_model->get_agenda();
+		$data['visi'] = $this->visi_model->get();
 		$this->load->view('users/visi_dan_misi', $data);
 	}
 
