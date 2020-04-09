@@ -21,4 +21,26 @@
         <i class="fa fa-calendar" aria-hidden="true"></i>
             <span>Agenda</span></a>
     </li>
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-users"></i>
+            <span>Pendataan</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/alamat') ?>">Alamat</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/Pendataan') ?>">Penduduk</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-building"></i>
+            <span>Goverment</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/alamat') ?>">Visi & Misi</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/Pendataan') ?>">Pegawai</a>
+        </div>
+    </li>
 </ul>
