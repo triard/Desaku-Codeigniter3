@@ -68,7 +68,7 @@
             title: {
                 display: true,
                 position: "top",
-                text: "Perbandingan Jenis Kelamin",
+                text: "Perbandingan Pendidikan Terakhir Penduduk",
                 fontSize: 18,
                 fontColor: "#111"
             },
