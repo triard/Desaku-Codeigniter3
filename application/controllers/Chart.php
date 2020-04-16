@@ -33,6 +33,13 @@ class Chart extends CI_Controller
         $data['chart_data'] = json_encode($data);
         $this->load->view('chart.php', $data);
     }
+
+
+    public function jumlahSurat()
+    {
+        
+    }
+
 }
 
 /* End of file Chart.php */

@@ -86,4 +86,9 @@ class agenda_model extends CI_Model
         $this->jam = $post["jam"];
         $this->db->update($this->_table, $this, array('id_agenda' => $post['id_agenda']));
     } 
+
+    public function getJumlahAgenda()
+    {
+        return $this->db->query("SELECT COUNT('id_agenda') FROM agenda")->row_array();
+    }
 }

@@ -17,6 +17,7 @@ class SuratOnlineAdmin extends CI_Controller {
 
 	public function index()
     {
+
 		$data['nama2'] = $this->session->userdata('user');
 		$data['idUser'] = $this->session->userdata('id');
         $data['title'] = "Desaku | Daftar Surat";

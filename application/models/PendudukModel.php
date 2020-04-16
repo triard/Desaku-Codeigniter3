@@ -141,7 +141,15 @@ class PendudukModel extends CI_Model
 		}
 	}
 
-    
+    public function getJumlahPengaduan()
+    {
+        return $this->db->query("SELECT COUNT('id') FROM pengaduan")->row_array();
+    }
+
+    public function getJumlahPenduduk()
+    {
+        return $this->db->query("SELECT COUNT('nik') FROM penduduk")->row_array();
+    }
 
 }
 

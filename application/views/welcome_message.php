@@ -64,7 +64,8 @@
               Data Desa
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="<?php echo  base_url('User/data_wilayah') ?>">Data Wilayah Administratif </a>
+              <a class="dropdown-item" href="<?php echo  base_url('User/data_wilayah') ?>">Data Wilayah Administratif
+              </a>
               <a class="dropdown-item" href="<?php echo  base_url('User/data_pendidikan') ?>">Data Pendidikan</a>
               <a class="dropdown-item" href="<?php echo  base_url('User/data_pekerjaan') ?>">Data Pekerjaan</a>
               <a class="dropdown-item" href="<?php echo  base_url('User/data_agama') ?>">Data Agama</a>
@@ -81,26 +82,26 @@
     <div class="row">
       <div class="col-sm-8">
         <br>
-      <?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
-				</div>
-    <?php endif; ?>
+        <?php if ($this->session->flashdata('success')): ?>
+        <div class="alert alert-success" role="alert">
+          <?php echo $this->session->flashdata('success'); ?>
+        </div>
+        <?php endif; ?>
         <br>
         <h2 style="color: red">Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
         <br>
-      <div class="card-group">
-      <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-      <?php foreach ($corona as $c) : ?>
-        <div class="card-header"><?php echo $c->name ?></div>
-          <div class="card-body">
-            <p class="card-text">Positif : <?php echo $c->positif ?> Orang</p>
-            <p class="card-text">Sembuh  : <?php echo $c->sembuh ?> Orang</p>
-            <p class="card-text">Meninggal  : <?php echo $c->meninggal ?> Orang</p>
-            <?php endforeach ?>
-        </div>  
-      </div>
-      <?php
+        <div class="card-group">
+          <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+            <?php foreach ($corona as $c) : ?>
+            <div class="card-header"><?php echo $c->name ?></div>
+            <div class="card-body">
+              <p class="card-text">Positif : <?php echo $c->positif ?> Orang</p>
+              <p class="card-text">Sembuh : <?php echo $c->sembuh ?> Orang</p>
+              <p class="card-text">Meninggal : <?php echo $c->meninggal ?> Orang</p>
+              <?php endforeach ?>
+            </div>
+          </div>
+          <?php
           $url = 'https://api.kawalcorona.com/indonesia/provinsi/';
 
           $ch = curl_init();
@@ -114,15 +115,15 @@
 
           $list = $data[2]['attributes'];
           ?>
-        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header"><?php echo $list['Provinsi'];?></div>
-          <div class="card-body">
-            <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
-            <p class="card-text">Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?></p>
-            <p class="card-text">Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?></p>
-        </div>  
-        </div>
-        <?php
+          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+            <div class="card-header"><?php echo $list['Provinsi'];?></div>
+            <div class="card-body">
+              <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
+              <p class="card-text">Kasus Sembuh : <?php echo  $list['Kasus_Semb'];?></p>
+              <p class="card-text">Kasus Meninggal <?php echo  $list['Kasus_Meni'];?></p>
+            </div>
+          </div>
+          <?php
           $url = 'https://bokusan.my.id/api/jawa-timur';
 
           $ch = curl_init();
@@ -136,21 +137,21 @@
 
           $list = $data['data']['all'];
           ?>
-     
-     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-           <?php foreach ($list as $key => $value) : ?>
-                <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
-                  <div class="card-header"><?php echo $value['region'] ?></div>
-            <div class="card-body">
-            <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
-            <p class="card-text">Sembuh  : <?= $value['recovered']; ?> Orang</p>
-            <p class="card-text">Meninggal  : <?= $value['deaths']; ?>  Orang</p>
-            <?php endif ?>
-            <?php endforeach; ?>
 
-        </div>  
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <?php foreach ($list as $key => $value) : ?>
+            <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
+            <div class="card-header"><?php echo $value['region'] ?></div>
+            <div class="card-body">
+              <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
+              <p class="card-text">Sembuh : <?= $value['recovered']; ?> Orang</p>
+              <p class="card-text">Meninggal : <?= $value['deaths']; ?> Orang</p>
+              <?php endif ?>
+              <?php endforeach; ?>
+
+            </div>
+          </div>
         </div>
-      </div>
       </div>
       <?php $this->load->view("usersLogin/template/sidebar.php") ?>
     </div>

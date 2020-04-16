@@ -31,7 +31,8 @@ class Pengaduan extends CI_Controller
 		$data['title'] = "Desaku | Pengaduan Detail";
 		$data['pengaduanDetail'] = $this->PendudukModel->getPengaduanId($id);
 		$this->load->view('admin/pengaduan_detail', $data);
-	}
+    }
+    
 
 }
 
