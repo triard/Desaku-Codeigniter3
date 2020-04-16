@@ -38,25 +38,25 @@
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav mr-auto">
 	<li class="nav-item">
-      		<a class="nav-link" href="#">Beranda<span class=""></span></a>
+      		<a class="nav-link" href="<?php echo  base_url('/')?>">Beranda<span class=""></span></a>
     	</li>
 		<!-- Dropdown -->
-    	<li class="nav-item dropdown">
+    <li class="nav-item dropdown">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Profil Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Sejarah Desa</a>
-        <a class="dropdown-item" href="#">Profil Wilayah Desa</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User')?>">Sejarah Desa</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/wilayah')?>">Profil Wilayah Desa</a>
       	</div>
 		</li>
-		<li class="nav-item dropdown active">
+    <li class="nav-item dropdown active">
       	<a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
         	Pemerintah Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item active" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/visi')?>">Visi Dan Misi</a>
+        <a class="dropdown-item active" href="<?php echo  base_url('User/struktur')?>">Struktur Organisasi</a>
       	</div>
     </li>
     <li class="nav-item dropdown">
@@ -64,8 +64,11 @@
         	Data Desa
       	</a>
       	<div class="dropdown-menu">
-        <a class="dropdown-item" href="#">Visi Dan Misi</a>
-        <a class="dropdown-item" href="#">Struktur Organisasi</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_wilayah')?>">Data Wilayah Administratif </a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_pendidikan')?>">Data Pendidikan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_pekerjaan')?>">Data Pekerjaan</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_agama')?>">Data Agama</a>
+        <a class="dropdown-item" href="<?php echo  base_url('User/data_sex')?>">Data Jenis Kelamin</a>
       	</div>
 		</li>
     </ul>
@@ -85,70 +88,28 @@
             <tr>
               <th>Nama</th>
               <th>Jabatan</th>
+              <th>Foto</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Jonny Anwar</td>
-              <td>Kepala Desa</td>
-            </tr>
-            <tr>
-              <td>Nafiah</td>
-              <td>Sekretaris Desa</td>
-            </tr>
-            <tr>
-              <td>Hanafi</td>
-              <td>Kepala Urusan Pemerintahan</td>
-            </tr>
-            <tr>
-              <td>Rabu</td>
-              <td>Kepala Urusan Pembangunan</td>
-            </tr>
-            <tr>
-              <td>Mustakim</td>
-              <td>Kepala Urusan Kesra</td>
-            </tr>
-            <tr>
-              <td>Hamidah</td>
-              <td>Kepala Urusan Keuangan</td>
-            </tr>
-            <tr>
-              <td>Solikin</td>
-              <td>Kepala Urusan Trantib</td>
-            </tr>
-            <tr>
-              <td>Subhan</td>
-              <td>Kepala Urusan Umum</td>
-            </tr>
+          <?php foreach ($struktur as $s): ?>
+									<tr>
+										<td width="150">
+											<?php echo $s['nama'] ?>
+										</td>
+										<td>
+											<?php echo $s['jabatan'] ?>
+										</td>
+										<td>
+                                        <img src="<?php echo base_url('upload/foto-penduduk/'.$s['foto']) ?>" width="64" />
+										</td>
+									</tr>
+									<?php endforeach; ?>
           </tbody>
       </table>
       </div>
     </div>
-    <div class="col-sm-4">
-      <h5>Wilayah Desa</h5>
-      <div class="fakeimg">
-        <a href="https://www.google.com/maps/place/Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3073796,111.9285504,14z/data=!3m1!4b1!4m5!3m4!1s0x2e782bf8b25b4017:0xc68196dfe06bf16a!8m2!3d-7.3003622!4d111.9492682" target="blank" 
-        class="responsive"><img src="<?php echo base_url('assets/trate.png'); ?>" alt=""></a>
-      </div>
-      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-      <h3>Some Links</h3>
-      <p>Lorem ipsum dolor sit ame.</p>
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
-      <hr class="d-sm-none">
-    </div>
+    <?php $this->load->view("usersLogin/template/sidebar.php") ?>
   </div>
 </div>
 

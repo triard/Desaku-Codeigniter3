@@ -32,9 +32,6 @@
     </div>
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <a class="navbar-brand" href="#">
-        <img src="bird.jpg" alt="logo" style="width:40px;">
-      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -76,29 +73,34 @@
           </li>
         </ul>
         <a class="form-inline my-2 my-lg-0" href="<?php echo base_url('Login/'); ?>">
-          <button type="button" class="btn btn-primary">Login</button>
+          <button type="button" class="btn btn-primary">Login Admin</button>
         </a>
       </div>
     </nav>
     </nav>
     <div class="row">
       <div class="col-sm-8">
-        <h2>Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
-        <p>
-          <?php foreach ($corona as $c) : ?>
-            <tr>
-              <h5><?php echo $c->name ?></h5>
-              <br>
-              <th>Positif : </th>
-              <td><?php echo $c->positif ?> Orang,</td>
-              <th>Sembuh : </th>
-              <td><?php echo $c->sembuh ?> Orang,</td>
-              <th>Meninggal : </th>
-              <td><?php echo $c->meninggal ?> Orang</td>
-            </tr>
-          <?php endforeach ?>
-          <br>
-          <?php
+        <br>
+      <?php if ($this->session->flashdata('success')): ?>
+				<div class="alert alert-success" role="alert">
+					<?php echo $this->session->flashdata('success'); ?>
+				</div>
+    <?php endif; ?>
+        <br>
+        <h2 style="color: red">Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
+        <br>
+      <div class="card-group">
+      <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+      <?php foreach ($corona as $c) : ?>
+        <div class="card-header"><?php echo $c->name ?></div>
+          <div class="card-body">
+            <p class="card-text">Positif : <?php echo $c->positif ?> Orang</p>
+            <p class="card-text">Sembuh  : <?php echo $c->sembuh ?> Orang</p>
+            <p class="card-text">Meninggal  : <?php echo $c->meninggal ?> Orang</p>
+            <?php endforeach ?>
+        </div>  
+      </div>
+      <?php
           $url = 'https://api.kawalcorona.com/indonesia/provinsi/';
 
           $ch = curl_init();
@@ -110,15 +112,17 @@
 
           $data = json_decode($json, true);
 
-          $list = $data[3]['attributes'];
-          var_dump($list);
-          die;
+          $list = $data[2]['attributes'];
           ?>
-
-        </p>
-        <br>
-        <p>
-          <?php
+        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header"><?php echo $list['Provinsi'];?></div>
+          <div class="card-body">
+            <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
+            <p class="card-text">Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?></p>
+            <p class="card-text">Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?></p>
+        </div>  
+        </div>
+        <?php
           $url = 'https://bokusan.my.id/api/jawa-timur';
 
           $ch = curl_init();
@@ -132,57 +136,23 @@
 
           $list = $data['data']['all'];
           ?>
-
-          <body>
-            <h2>Data Jatim</h2>
-
-            <table>
-              <tr>
-                <th>Region</th>
-                <th>confirmed</th>
-                <th>recovered</th>
-                <th>deaths</th>
-              </tr>
-              <tr>
-                <?php foreach ($list as $key => $value) : ?>
-                  <td><?= $value['region']; ?></td>
-                  <td><?= $value['confirmed']; ?></td>
-                  <td><?= $value['recovered']; ?></td>
-                  <td><?= $value['deaths']; ?></td>
-              </tr>
+     
+     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+           <?php foreach ($list as $key => $value) : ?>
+                <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
+                  <div class="card-header"><?php echo $value['region'] ?></div>
+            <div class="card-body">
+            <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
+            <p class="card-text">Sembuh  : <?= $value['recovered']; ?> Orang</p>
+            <p class="card-text">Meninggal  : <?= $value['deaths']; ?>  Orang</p>
+            <?php endif ?>
             <?php endforeach; ?>
-            </table>
-        </p>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg">Fake Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      </div>
-      <div class="col-sm-4">
-        <h5>Wilayah Desa</h5>
-        <div class="fakeimg">
-          <a href="https://www.google.com/maps/place/Trate,+Sugihwaras,+Bojonegoro+Regency,+East+Java/@-7.3011649,111.9598312,15z/data=!3m1!4b1!4m5!3m4!1s0x2e78294e97c50a7b:0x603113d4a3811225!8m2!3d-7.2994534!4d111.9671537" target="blank" class="responsive"><img src="<?php echo base_url('assets/trate.png'); ?>" alt=""></a>
+
+        </div>  
         </div>
-        <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-        <h3>Some Links</h3>
-        <p>Lorem ipsum dolor sit ame.</p>
-        <ul class="nav nav-pills flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
-        </ul>
-        <hr class="d-sm-none">
       </div>
+      </div>
+      <?php $this->load->view("usersLogin/template/sidebar.php") ?>
     </div>
   </div>
 

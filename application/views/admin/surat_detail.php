@@ -28,41 +28,33 @@
                 <div class="card-body">
                     <h5 class="card-title"><?php echo $suratDetail['nama']; ?></h5>
                     <p class="card-text">
-                        <label for="">NIK</label>
-                        <br><?php echo $suratDetail['nik']; ?>
+                        <label for=""><b>Category</b></label>
+                        <br><?php echo $suratDetail['nama_surat']; ?>
                     </p>
                     <p class="card-text">
-                        <label for="">Category</label>
-                        <br><?php echo $suratDetail['category']; ?>
-                    </p>
-                    <p class="card-text">
-                        <label for="">Tanggal</label>
+                        <label for=""><b>Tanggal</b></label>
                         <br><?php echo $suratDetail['tgl_permohonan']; ?>
                     </p>
                     <p class="card-text">
-                            <label for="">Isi Pengaduan</label>
+                            <label for=""><b>Isi Pengaduan</b></label>
                             <br><?php echo $suratDetail['isi'];?>
                     </p>
-                    <p class="card-text">
-                        <label for="">No telp</label>
-                        <br><?php echo $suratDetail['no_telp'];?>
-                    </p>
+
                       <form action="<?php base_url('admin/suratAdminOnline/update') ?>" method="post" enctype="multipart/form-data">
-                        <input type="hidden" name="id" value="<?php echo $suratDetail['id'] ?>" />
+                        <input type="hidden" name="id" value="<?php echo $suratDetail['id_surat'] ?>" />
                         <div class=" form-group">
-                            <label for="status">Status</label>
+                            <label for="status"><b>Status</b></label>
                             <select id="status" class="form-control" name="status">
-                                <option value="<?= $suratDetail['status']; ?>"><?= $suratDetail['status']; ?></option>
+                                <option value="<?= $suratDetail['status_surat']; ?>"><?= $suratDetail['status_surat']; ?></option>
                                 <option value="proses">proses</option>
                                 <option value="Dapat diambil">Dapat diambil</option>
                                 <option value="Gagal">Gagal</option>
                             </select>
                         </div>
+                        <a href="<?php echo site_url('admin/SuratOnlineAdmin/') ?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i>
+                        Back</a>
                         <input class="btn btn-success" type="submit" name="btn" value="Update Status" />
                       </form>
-                    <a href="<?php echo site_url('admin/SuratOnlineAdmin/') ?>" class="btn btn-danger"><i class="fa fa-arrow-left"></i>
-                        Back</a>
-
                 </div>
             </div>
         </div>

@@ -1,22 +1,12 @@
 <!-- Sidebar -->
 <ul class="sidebar navbar-nav">
     <li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active' : '' ?>">
-        <a class="nav-link" href="<?php echo site_url('admin') ?>">
+        <a class="nav-link" href="<?php echo base_url('admin/overview') ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Overview</span>
         </a>
     </li>
-    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active' : '' ?>">
-        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-boxes"></i>
-            <span>Products</span>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-            <a class="dropdown-item" href="<?php echo site_url('admin/products/add') ?>">New Product</a>
-            <a class="dropdown-item" href="<?php echo site_url('admin/products') ?>">List Product</a>
-        </div>
-    </li>
-    <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('admin/SuratOnlineAdmin') ?>">
         <i class="fas fa-envelope"></i>
             <span>Surat</span></a>
@@ -27,8 +17,30 @@
             <span>Pengaduan</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Settings</span></a>
+        <a class="nav-link" href="<?= base_url('admin/agenda') ?>">
+        <i class="fa fa-calendar" aria-hidden="true"></i>
+            <span>Agenda</span></a>
+    </li>
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-users"></i>
+            <span>Pendataan</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/alamat') ?>">Alamat</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/Pendataan') ?>">Penduduk</a>
+        </div>
+    </li>
+    <li class="nav-item dropdown <?php echo $this->uri->segment(2) == 'products' ? 'active': '' ?>">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="fas fa-building"></i>
+            <span>Goverment</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <a class="dropdown-item" href="<?php echo site_url('admin/Visi') ?>">Visi & Misi</a>
+            <a class="dropdown-item" href="<?php echo site_url('admin/struktur') ?>">Struktur Organisasi</a>
+        </div>
     </li>
 </ul>
