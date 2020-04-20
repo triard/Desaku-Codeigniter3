@@ -115,42 +115,21 @@
 
           $list = $data[2]['attributes'];
           ?>
-          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-            <div class="card-header"><?php echo $list['Provinsi'];?></div>
+
+        <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header"><?php echo $list['Provinsi'];?></div>
+          <div class="card-body">
+            <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
+            <p class="card-text">Kasus Sembuh :  <?php echo  $list['Kasus_Semb'];?></p>
+            <p class="card-text">Kasus Meninggal  <?php echo  $list['Kasus_Meni'];?></p>
+        </div>  
+        </div>
+     
+     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+                  <div class="card-header">Bojonegoro</div>
             <div class="card-body">
-              <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi'];?><br></p>
-              <p class="card-text">Kasus Sembuh : <?php echo  $list['Kasus_Semb'];?></p>
-              <p class="card-text">Kasus Meninggal <?php echo  $list['Kasus_Meni'];?></p>
-            </div>
-          </div>
-          <?php
-          $url = 'https://bokusan.my.id/api/jawa-timur';
-
-          $ch = curl_init();
-          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-          curl_setopt($ch, CURLOPT_URL, $url);
-          $json = curl_exec($ch);
-          curl_close($ch);
-
-          $data = json_decode($json, true);
-
-          $list = $data['data']['all'];
-          ?>
-
-          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <?php foreach ($list as $key => $value) : ?>
-            <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
-            <div class="card-header"><?php echo $value['region'] ?></div>
-            <div class="card-body">
-              <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
-              <p class="card-text">Sembuh : <?= $value['recovered']; ?> Orang</p>
-              <p class="card-text">Meninggal : <?= $value['deaths']; ?> Orang</p>
-              <?php endif ?>
-              <?php endforeach; ?>
-
-            </div>
-          </div>
+            <a href="http://covid19.boxer.or.id/" target="_blank" rel="noopener noreferrer" class="btn btn-danger" style="color:white">Detail</a>
+        </div>  
         </div>
       </div>
       <?php $this->load->view("usersLogin/template/sidebar.php") ?>
