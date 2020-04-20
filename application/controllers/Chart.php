@@ -37,9 +37,7 @@ class Chart extends CI_Controller
 
     public function jumlahSurat()
     {
-        
     }
-
 }
 
 /* End of file Chart.php */

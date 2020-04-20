@@ -22,7 +22,8 @@
         Jika anda ingin mengampilkan breadcrumb di halaman overview,
         silahkan hilangkan komentar (//) di tag PHP di bawah.
         -->
-				<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>
+				<?php //$this->load->view("admin/_partials/breadcrumb.php") 
+				?>
 
 				<!-- Icon Cards-->
 				<div class="row">
@@ -35,8 +36,7 @@
 								</div>
 								<div class="mr-5"><?= $surat["COUNT('id_surat')"] ?> Surat</div>
 							</div>
-							<a class="card-footer text-white clearfix small z-1"
-								href="<?= base_url('admin/SuratOnlineAdmin')?>">
+							<a class="card-footer text-white clearfix small z-1" href="<?= base_url('admin/SuratOnlineAdmin') ?>">
 								<span class="float-left">View Details</span>
 								<span class="float-right">
 									<i class="fas fa-angle-right"></i>
@@ -52,8 +52,7 @@
 								</div>
 								<div class="mr-5"><?= $pengaduan["COUNT('id')"] ?> Pengaduan</div>
 							</div>
-							<a class="card-footer text-white clearfix small z-1"
-								href="<?= base_url('admin/pengaduan')?>">
+							<a class="card-footer text-white clearfix small z-1" href="<?= base_url('admin/pengaduan') ?>">
 								<span class="float-left">View Details</span>
 								<span class="float-right">
 									<i class="fas fa-angle-right"></i>
@@ -69,7 +68,7 @@
 								</div>
 								<div class="mr-5"> <?= $agenda["COUNT('id_agenda')"] ?> Agenda</div>
 							</div>
-							<a class="card-footer text-white clearfix small z-1" href="<?= base_url('admin/agenda')?>">
+							<a class="card-footer text-white clearfix small z-1" href="<?= base_url('admin/agenda') ?>">
 								<span class="float-left">View Details</span>
 								<span class="float-right">
 									<i class="fas fa-angle-right"></i>
@@ -85,8 +84,7 @@
 								</div>
 								<div class="mr-5"><?= $penduduk["COUNT('nik')"] ?> Data Penduduk</div>
 							</div>
-							<a class="card-footer text-white clearfix small z-1"
-								href="<?= base_url('admin/Pendataan')?>">
+							<a class="card-footer text-white clearfix small z-1" href="<?= base_url('admin/Pendataan') ?>">
 								<span class="float-left">View Details</span>
 								<span class="float-right">
 									<i class="fas fa-angle-right"></i>
@@ -95,35 +93,32 @@
 						</div>
 					</div>
 				</div>
-
-				<!-- Area Chart Example-->
-				<div class="card mb-3">
-					<div class="card-header">
-						<i class="fas fa-chart-area"></i>
-						Visitor Stats</div>
-					<div class="card-body">
-						<canvas id="myAreaChart" width="100%" height="30"></canvas>
-					</div>
-					<div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+				<div>
+					<?php $this->load->view('admin/_partials/chart_pendidikan', $data); ?>
+				</div>
+				<br>
+				<div>
+					<?php $this->load->view('admin/_partials/chart_pekerjaan', $data); ?>
 				</div>
 
-			</div>
-			<!-- /.container-fluid -->
 
-			<!-- Sticky Footer -->
-			<?php $this->load->view("admin/_partials/footer.php") ?>
+				<!-- Area Chart Example-->
+				<!-- /.container-fluid -->
+
+				<!-- Sticky Footer -->
+				<?php $this->load->view("admin/_partials/footer.php") ?>
+
+			</div>
+			<!-- /.content-wrapper -->
 
 		</div>
-		<!-- /.content-wrapper -->
-
-	</div>
-	<!-- /#wrapper -->
+		<!-- /#wrapper -->
 
 
-	<?php $this->load->view("admin/_partials/scrolltop.php") ?>
-	<?php $this->load->view("admin/_partials/modal.php") ?>
-	<?php $this->load->view("admin/_partials/js.php") ?>
 
+		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
+		<?php $this->load->view("admin/_partials/modal.php") ?>
+		<?php $this->load->view("admin/_partials/js.php") ?>
 </body>
 
 </html>
