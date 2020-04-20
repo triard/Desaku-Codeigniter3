@@ -1,43 +1,33 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>ChartJS - bar</title>
-    <!-- Latest CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<body>
-    <div class="chart-container">
-        <div class="bar-chart-container">
-            <canvas style="height:40vh; width:80vw" id="bar-chart"></canvas>
-        </div>
+<div class="chart-container">
+    <div class="bar-chart-container">
+        <canvas style="height:40vh; width:80vw" id="bar-chart2"></canvas>
     </div>
+</div>
 
-    <!-- javascript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-</body>
+<!-- javascript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <script>
     $(function() {
         //get the bar chart canvas
-        var cData = JSON.parse('<?php echo $chart_data; ?>');
+        var cData = JSON.parse('<?php echo $chart_data2; ?>');
         console.log(cData);
-        var ctx = $("#bar-chart");
+        var ctx = $("#bar-chart2");
 
         //bar chart data
         var data = {
-            labels: cData.label,
+            labels: cData.label2,
             datasets: [{
-                label: cData.label,
-                data: cData.data,
+                label: cData.label2,
+                data: cData.data2,
                 backgroundColor: [
                     "#00ff00",
                     "#ff3399",
                     "#DC143C",
                     "#F4A460",
-                    "#2E8B57",
-                    "#1D7A46",
+                    "#16dbf6",
+                    "#e2f616",
                     "#CDA776",
                     "#CDA776",
                     "#989898",
@@ -49,8 +39,8 @@
                     "#989898",
                     "#CB252B",
                     "#E39371",
-                    "#1D7A46",
-                    "#F4A460",
+                    "#16dbf6",
+                    "#e2f616",
                     "#CDA776",
                     "#DEB887",
                     "#A9A9A9",
@@ -68,7 +58,7 @@
             title: {
                 display: true,
                 position: "top",
-                text: "Perbandingan Pendidikan Terakhir Penduduk",
+                text: "Perbandingan Pekerjaan Penduduk",
                 fontSize: 18,
                 fontColor: "#111"
             },
@@ -93,4 +83,4 @@
     });
 </script>
 
-</html>
+</div>

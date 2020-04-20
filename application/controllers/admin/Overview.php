@@ -1,25 +1,64 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Overview extends CI_Controller {
+class Overview extends CI_Controller
+{
 
 	public function __construct()
 	{
-		parent ::__construct();
+		parent::__construct();
 		$this->load->model('');
+		$this->load->model('SuratModel');
+		$this->load->model('PendudukModel');
+		$this->load->model('agenda_model');
+		$this->load->model('PendudukModel');
 		$this->load->library('form_validation');
-		if($this->session->userdata('jenis_user')!="Admin"){
-			redirect('Login','refresh');
+		if ($this->session->userdata('jenis_user') != "Admin") {
+			redirect('Login', 'refresh');
 		}
 	}
 
 
 	public function index()
 	{
+
+
+		$query = $this->db->query("SELECT pendidikan as pen, COUNT(pendidikan) as pd FROM penduduk GROUP BY pendidikan");
+
+		$record = $query->result();
+		$data1 = [];
+
+		foreach ($record as $row) {
+			$data1['label'][] = $row->pen;
+			$data1['data'][] = $row->pd;
+		}
+		$data1['chart_data'] = json_encode($data1);
+
+
+		// Pekerjaan
+		$query = $this->db->query("SELECT pekerjaan as pen, COUNT(pekerjaan) as pd FROM penduduk GROUP BY pekerjaan");
+
+		$record = $query->result();
+		$data2 = [];
+
+		foreach ($record as $row) {
+			$data2['label2'][] = $row->pen;
+			$data2['data2'][] = $row->pd;
+		}
+		$data2['chart_data2'] = json_encode($data2);
+
 		$data['nama2'] = $this->session->userdata('user');
 		$data['idUser'] = $this->session->userdata('id');
+		$data['surat'] =  $this->SuratModel->getJumlahSurat();
+		$data['pengaduan'] =  $this->PendudukModel->getJumlahPengaduan();
+		$data['agenda'] =  $this->agenda_model->getJumlahAgenda();
+		$data['penduduk'] =  $this->PendudukModel->getJumlahPenduduk();
+
+		$data = array_merge($data, $data2, $data1);
+
+		// print_r($data);
+		// die();
+
 		$this->load->view('admin/overview', $data);
 	}
-
-	
 }

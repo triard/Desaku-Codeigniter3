@@ -68,6 +68,11 @@ class SuratModel extends CI_Model
         $this->db->update($this->_surat, $this, array('id_surat'=>$post['id']));
     }
 
+    public function getJumlahSurat()
+    {
+        return $this->db->query("SELECT COUNT('id_surat') FROM surat")->row_array();
+    }
+
     
 }
 
