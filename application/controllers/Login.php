@@ -104,12 +104,15 @@ class Login extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($penduduk->rules());
 
-        if ($validation->run()) {
+        if ($validation->run() && $penduduk-> registrasi_penduduk()) {
             $penduduk-> registrasi_penduduk();
 			$this->session->set_flashdata('success', 'Registrasi berhasil');
 			redirect('/');
-        }
-		$this->load->view('login/register_penduduk');
+        }else{
+			$this->session->set_flashdata('message', 'Data tidak valid');
+			$this->load->view('login/register_penduduk');
+		}
+
 
 	}
 
