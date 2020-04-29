@@ -1,3 +1,4 @@
+<?php var_dump($pengaduanDetail); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,51 +10,52 @@
 </head>
 
 <body id="page-top">
-<?php $this->load->view("admin/_partials/navbar.php") ?>
-<div id="wrapper">
-<?php $this->load->view("admin/_partials/sidebar.php") ?>
+    <?php $this->load->view("admin/_partials/navbar.php") ?>
+    <div id="wrapper">
+        <?php $this->load->view("admin/_partials/sidebar.php") ?>
 
-<div id="content-wrapper">
+        <div id="content-wrapper">
 
-    <div class="container-fluid">
+            <div class="container-fluid">
 
 
-    <div class="container">
-    <div class="row mt-3">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Detail Pengaduan</h3> 
+                <div class="container">
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3>Detail Pengaduan</h3>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><?php echo $pengaduanDetail['nama']; ?></h5>
+                                    <p class="card-text">
+                                        <label for="">Perihal</label>
+                                        <br><?php echo $pengaduanDetail['perihal']; ?>
+                                    </p>
+                                    <p class="card-text">
+                                        <label for="">Tanggal</label>
+                                        <br><?php echo $pengaduanDetail['tanggal']; ?>
+                                    </p>
+                                    <p class="card-text">
+                                        <label for="">Isi Pengaduan</label>
+                                        <br><?php echo $pengaduanDetail['isi']; ?>
+                                    </p>
+                                    <a href="<?php echo site_url('admin/pengaduan') ?>" class="btn btn-primary"><i class="fa fa-arrow-left"></i>
+                                        Back</a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h5 class="card-title"><?php echo $pengaduanDetail['nama']; ?></h5>
-                    <p class="card-text">
-                        <label for="">Perihal</label>
-                        <br><?php echo $pengaduanDetail['perihal']; ?>
-                    </p>
-                    <p class="card-text">
-                        <label for="">Tanggal</label>
-                        <br><?php echo $pengaduanDetail['tanggal']; ?>
-                    </p>
-                    <p class="card-text">
-                            <label for="">Isi Pengaduan</label>
-                            <br><?php echo $pengaduanDetail['isi'];?>
-                    </p>
-                    <a href="<?php echo site_url('admin/pengaduan') ?>" class="btn btn-primary"><i class="fa fa-arrow-left"></i>
-                        Back</a>
 
-                </div>
+                <?php $this->load->view("admin/_partials/footer.php") ?>
             </div>
         </div>
-    </div>
-</div>
 
-    <?php $this->load->view("admin/_partials/footer.php") ?>
-    </div>
-</div>
-
-    <?php $this->load->view("admin/_partials/scrolltop.php") ?>
-    <?php $this->load->view("admin/_partials/modal.php") ?>
-    <?php $this->load->view("admin/_partials/js.php") ?>
+        <?php $this->load->view("admin/_partials/scrolltop.php") ?>
+        <?php $this->load->view("admin/_partials/modal.php") ?>
+        <?php $this->load->view("admin/_partials/js.php") ?>
 </body>
+
 </html>

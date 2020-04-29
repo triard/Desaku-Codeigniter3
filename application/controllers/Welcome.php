@@ -1,38 +1,48 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller {
+class Welcome extends CI_Controller
+{
 
-	var $API ="";
+    var $API = "";
 
-    function __construct() {
+    function __construct()
+    {
         parent::__construct();
-        $this->API="https://api.kawalcorona.com";
+        $this->API = "https://api.kawalcorona.com";
         $this->load->model('agenda_model');
+        $this->load->model('ArtikelModel');
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('curl');
         $this->load->helper('url');
     }
 
-	public function index()
-	{
-        $data ['title'] = 'Beranda|| Desaku';
-        $data['agenda'] = $this->agenda_model->get_agenda();     
-        $data['corona'] = json_decode($this->curl->simple_get($this->API.'/indonesia'));
-        $this->load->view('welcome_message',$data);
+    public function index()
+    {
+        $data['title'] = 'Beranda|| Desaku';
+        $data['agenda'] = $this->agenda_model->get_agenda();
+        $data['artikel'] = $this->ArtikelModel->getArtikel();
+        $data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
+        $this->load->view('welcome_message', $data);
     }
 
-    
+    public function detail($id)
+    {
+        $data['detail'] = $this->ArtikelModel->getById($id);
+        $this->load->view('artikel/detail', $data);
+    }
 
 
 
-    
 
-  
-        // if($this->input->post('keyword')){
-        //     $data['mahasiswa']=$this->mahasiswa_model->cariDataMahasiswa();
-        // }   
+
+
+
+
+    // if($this->input->post('keyword')){
+    //     $data['mahasiswa']=$this->mahasiswa_model->cariDataMahasiswa();
+    // }   
 
     // public function tambah(){
     //     $data['title'] = 'Insert Mahasiswa';
@@ -52,9 +62,9 @@ class Welcome extends CI_Controller {
     //     public function delete($id){
     //         $this->mahasiswa_model->hapusdatamhs($id);
     //         $this->session->set_flashdata('success','Data berhasil dihapus');
-            
+
     //         redirect('mahasiswa','refresh');
-            
+
     //     }
     // public function detail($id=null){
     //     $data['title'] = 'Detail Mahasiswa';
@@ -67,7 +77,7 @@ class Welcome extends CI_Controller {
     //     $data['title'] = 'Edit Mahasiswa';
     //     $data['jurusan']=['informatika','kimia','mesin'];
     //     $data['mahasiswa']=$this->mahasiswa_model->getMahasiswabyid($id);
-    
+
     //     $mahasiswa = $this->mahasiswa_model;
     //     $validation = $this->form_validation;
     //     $validation->set_rules($mahasiswa->rules());
