@@ -18,10 +18,10 @@
 
 				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php if ($this->session->flashdata('success')): ?>
-				<div class="alert alert-success" role="alert">
-					<?php echo $this->session->flashdata('success'); ?>
-				</div>
+				<?php if ($this->session->flashdata('success')) : ?>
+					<div class="alert alert-success" role="alert">
+						<?php echo $this->session->flashdata('success'); ?>
+					</div>
 				<?php endif; ?>
 
 				<!-- Card  -->
@@ -33,16 +33,14 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url(" admin/struktur/edit") ?>" method="post"
-							enctype="multipart/form-data">
+						<form action="<?php base_url(" admin/struktur/edit") ?>" method="post" enctype="multipart/form-data">
 
-                            <input type="hidden" name="id" value="<?php echo $struktur->id?>" />
-                            <input type="hidden" name="jabatan" value="<?php echo $struktur->jabatan?>" />
+							<input type="hidden" name="id" value="<?php echo $struktur->id ?>" />
+							<input type="hidden" name="jabatan" value="<?php echo $struktur->jabatan ?>" />
 
 							<div class="form-group">
 								<label for="name">NIK</label>
-								<input class="form-control <?php echo form_error('id_penduduk') ? 'is-invalid':'' ?>"
-								 type="text" name="id_penduduk" placeholder="Masukan Nik" value="<?php echo $struktur->id_penduduk ?>" />
+								<input class="form-control <?php echo form_error('id_penduduk') ? 'is-invalid' : '' ?>" type="text" name="id_penduduk" placeholder="Masukan Nik" value="<?php echo $struktur->id_penduduk ?>" />
 								<div class="invalid-feedback">
 									<?php echo form_error('id_penduduk') ?>
 								</div>

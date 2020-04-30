@@ -15,7 +15,7 @@
                         <div class="col-6">
                             <div class="form-group">
                                 <label for="perihal">Perihal:</label>
-                                <input type="text" class="form-control"  id="perihal" name="perihal">
+                                <input type="text" class="form-control" id="perihal" name="perihal">
                             </div>
                         </div>
                     </div>

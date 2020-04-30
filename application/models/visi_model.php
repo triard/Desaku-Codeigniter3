@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class visi_model extends CI_Model
 {
@@ -21,33 +21,47 @@ class visi_model extends CI_Model
     public function rules()
     {
         return [
-            ['field' => 'visi',
-            'label' => 'visi',
-            'rules' => 'required'],
-          
-            ['field' => 'misi1',
-            'label' => 'misi1',
-            'rules' => 'required'],
+            [
+                'field' => 'visi',
+                'label' => 'visi',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'misi2',
-            'label' => 'misi2',
-            'rules' => 'required'],
+            [
+                'field' => 'misi1',
+                'label' => 'misi1',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'misi3',
-            'label' => 'misi3',
-            'rules' => 'required'],
+            [
+                'field' => 'misi2',
+                'label' => 'misi2',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'proker1',
-            'label' => 'proker1',
-            'rules' => 'required'],
+            [
+                'field' => 'misi3',
+                'label' => 'misi3',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'proker2',
-            'label' => 'proker2',
-            'rules' => 'required'],
+            [
+                'field' => 'proker1',
+                'label' => 'proker1',
+                'rules' => 'required'
+            ],
 
-            ['field' => 'proker3',
-            'label' => 'proker3',
-            'rules' => 'required'],
+            [
+                'field' => 'proker2',
+                'label' => 'proker2',
+                'rules' => 'required'
+            ],
+
+            [
+                'field' => 'proker3',
+                'label' => 'proker3',
+                'rules' => 'required'
+            ],
         ];
     }
 
@@ -55,7 +69,7 @@ class visi_model extends CI_Model
     {
         return $this->db->get($this->_table)->result();
     }
-    
+
     public function getById($id)
     {
         return $this->db->get_where($this->_table, ["id" => $id])->row();
@@ -65,11 +79,10 @@ class visi_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('visi_misi');
-        $this->db->order_by('id','DESC');
+        $this->db->order_by('id', 'DESC');
         $this->db->limit(1);
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function save()
@@ -112,6 +125,5 @@ class visi_model extends CI_Model
     public function delete($id)
     {
         return $this->db->delete($this->_table, array("id" => $id));
-	}
-	
+    }
 }

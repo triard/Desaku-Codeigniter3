@@ -6,19 +6,19 @@ class SuratModel extends CI_Model
 {
 
     private $_surat = "surat";
- 
-    
-	  public function rules()
-      {
-          return [
-              [
-                  'field' => 'status',
-                  'label' => 'status',
-                  'rules' => 'required'
-              ]
-          ];
-      }
-  
+
+
+    public function rules()
+    {
+        return [
+            [
+                'field' => 'status',
+                'label' => 'status',
+                'rules' => 'required'
+            ]
+        ];
+    }
+
 
     public function tambahSurat()
     {
@@ -61,19 +61,18 @@ class SuratModel extends CI_Model
         return $this->db->get_where($this->_surat, ['s.id_surat' => $id])->row_array();
     }
 
-    public function updateStatusSurat(){
+    public function updateStatusSurat()
+    {
         $post = $this->input->post();
         $this->id_surat    = $post["id"];
-        $this->status_surat=$post["status"];
-        $this->db->update($this->_surat, $this, array('id_surat'=>$post['id']));
+        $this->status_surat = $post["status"];
+        $this->db->update($this->_surat, $this, array('id_surat' => $post['id']));
     }
 
     public function getJumlahSurat()
     {
         return $this->db->query("SELECT COUNT('id_surat') FROM surat")->row_array();
     }
-
-    
 }
 
 /* End of file PendudukModel.php */

@@ -18,8 +18,8 @@ class Login extends CI_Controller
 	public function index()
 	{
 		if ($this->form_validation->run() == FALSE) {
-		$data['title'] = "Login Admin | Desa Trate";
-		$this->load->view('login/index', $data);
+			$data['title'] = "Login Admin | Desa Trate";
+			$this->load->view('login/index', $data);
 		} else {
 			$this->index();
 		}
@@ -33,28 +33,22 @@ class Login extends CI_Controller
 
 		$cek_login = $this->login_model->login($username, $password);
 
-		if ($cek_login) 
-		{
-			foreach ($cek_login as $row) 
-			{
+		if ($cek_login) {
+			foreach ($cek_login as $row) {
 				$this->session->set_userdata('user', $row->username);
 				$this->session->set_userdata('jenis_user', $row->jenis_user);
 			}
 
-			if ($this->session->userdata('jenis_user') == 'Admin') 
-			{
+			if ($this->session->userdata('jenis_user') == 'Admin') {
 				redirect('admin/Overview');
-			} else if ($this->session->userdata('jenis_user') == 'sekretaris')
-			 {
+			} else if ($this->session->userdata('jenis_user') == 'sekretaris') {
 				redirect('sekretaris');
-			} else if ($this->session->userdata('jenis_user') == 'Penduduk') 
-			{
+			} else if ($this->session->userdata('jenis_user') == 'Penduduk') {
 				redirect('UserLogin/index');
 			}
-		} else 
-		{
+		} else {
 			$this->session->set_flashdata('message', 'Username atau Password salah');
-			redirect('login','refresh');
+			redirect('login', 'refresh');
 		}
 	}
 
@@ -65,77 +59,74 @@ class Login extends CI_Controller
 
 		$cek_login = $this->login_model->login_penduduk($username, $password);
 
-		if ($cek_login) 
-		{
-			foreach ($cek_login as $row) 
-			{
+		if ($cek_login) {
+			foreach ($cek_login as $row) {
 				$this->session->set_userdata('username', $row->username);
 				$this->session->set_userdata('jenis_user', $row->jenis_user);
 			}
-			if ($this->session->userdata('jenis_user') == 'Penduduk') 
-			{
+			if ($this->session->userdata('jenis_user') == 'Penduduk') {
 				redirect('UserLogin/index');
 			}
-		} else 
-		{
+		} else {
 			$this->session->set_flashdata('message', 'Username atau Password salah');
-			redirect('/','refresh');
+			redirect('/', 'refresh');
 		}
 	}
 
 	public function logout()
 	{
-	  $this->session->userdata('Admin');
-	  $this->session->sess_destroy();
-	  redirect('Welcome', 'refresh');
+		$this->session->userdata('Admin');
+		$this->session->sess_destroy();
+		redirect('Welcome', 'refresh');
 	}
-  
+
 
 	public function logoutPenduduk()
 	{
-	  $this->session->userdata('Penduduk');
-	  $this->session->sess_destroy();
-	  $this->session->set_flashdata('success', 'Berhasil Logout');
-	  redirect('Welcome');
+		$this->session->userdata('Penduduk');
+		$this->session->sess_destroy();
+		$this->session->set_flashdata('success', 'Berhasil Logout');
+		redirect('Welcome');
 	}
 
-	public function buatAkunPenduduk(){
+	public function buatAkunPenduduk()
+	{
 		$penduduk = $this->login_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($penduduk->rules());
+		$validation = $this->form_validation;
+		$validation->set_rules($penduduk->rules());
 
-        if ($validation->run() && $penduduk-> registrasi_penduduk()) {
-            $penduduk-> registrasi_penduduk();
+		if ($validation->run() && $penduduk->registrasi_penduduk()) {
+			$penduduk->registrasi_penduduk();
 			$this->session->set_flashdata('success', 'Registrasi berhasil');
 			redirect('/');
-        }else{
+		} else {
 			$this->session->set_flashdata('message', 'Data tidak valid');
 			$this->load->view('login/register_penduduk');
 		}
-
-
 	}
 
 
-	public function buatAkunUser(){
+	public function buatAkunUser()
+	{
 		$user = $this->login_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($user->rules());
+		$validation = $this->form_validation;
+		$validation->set_rules($user->rules());
 
-        if ($validation->run()) {
-            $user-> registrasi_user();
+		if ($validation->run()) {
+			$user->registrasi_user();
 			$this->session->set_flashdata('success', 'Berhasil disimpan');
 			redirect('Login/');
-        }
+		}
 		$this->load->view('login/register_user');
 	}
 
-	public function view_profile_user($id){
+	public function view_profile_user($id)
+	{
 		$data['title'] = 'Desaku | Profil User';
 		$data['nama2'] = $this->session->userdata('user');
 		$data['idUser'] = $this->session->userdata('id');
-        $data['profile'] = $this->login_model->getById($id);
-        $this->load->view('admin/profile_user', $data);
+		$data['profile'] = $this->login_model->getById($id);
+		$this->load->view('admin/profile_user', $data);
 	}
 
 
@@ -145,7 +136,7 @@ class Login extends CI_Controller
 		$data['nama2'] = $this->session->userdata('username');
 		$data['idUser'] = $this->session->userdata('id');
 		if (!isset($id)) redirect('Login/view_profile_user');
-	   
+
 		$user = $this->login_model;
 		$validation = $this->form_validation;
 		$validation->set_rules($user->rules());
@@ -157,7 +148,7 @@ class Login extends CI_Controller
 
 		$data["profile"] = $user->getById($id);
 		if (!$data["profile"]) show_404();
-		
+
 		$this->load->view("admin/profile_user_edit", $data);
 	}
 }

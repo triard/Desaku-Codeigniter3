@@ -35,26 +35,25 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($alamat as $a): ?>
-									<tr>
-										<td width="150">
-											<?php echo $a->jalan ?>
-										</td>
-										<td>
-											<?php echo $a->rt ?>
-										</td>
-										<td>
-                                        <?php echo $a->rw ?>
-                                        </td>
-                                        <td>
-                                        <?php echo $a->nomor ?>
-										</td>
-										<td width="250">
-											<a href="<?php echo site_url('admin/Alamat/edit/'.$a->id_alamat) ?>"
-                                             class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-                                             <a class="dropdown-item" href="<?= base_url(); ?>admin/Alamat/delete/<?= $a->id_alamat ?>" onclick="return confirm('Yakin Data Ini Akan Dihapus');" style="color: red">Hapus</a>
-										</td>
-									</tr>
+									<?php foreach ($alamat as $a) : ?>
+										<tr>
+											<td width="150">
+												<?php echo $a->jalan ?>
+											</td>
+											<td>
+												<?php echo $a->rt ?>
+											</td>
+											<td>
+												<?php echo $a->rw ?>
+											</td>
+											<td>
+												<?php echo $a->nomor ?>
+											</td>
+											<td width="250">
+												<a href="<?php echo site_url('admin/Alamat/edit/' . $a->id_alamat) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+												<a class="dropdown-item" href="<?= base_url(); ?>admin/Alamat/delete/<?= $a->id_alamat ?>" onclick="return confirm('Yakin Data Ini Akan Dihapus');" style="color: red">Hapus</a>
+											</td>
+										</tr>
 									<?php endforeach; ?>
 
 								</tbody>
@@ -74,10 +73,10 @@
 	<?php $this->load->view("admin/_partials/js.php") ?>
 
 	<script>
-	function deleteConfirm(url){
-		$('#btn-delete').attr('href', url);
-		$('#deleteModal').modal();
-	}
+		function deleteConfirm(url) {
+			$('#btn-delete').attr('href', url);
+			$('#deleteModal').modal();
+		}
 	</script>
 </body>
 

@@ -21,6 +21,7 @@
 				<!-- DataTables -->
 				<div class="card mb-3">
 					<div class="card-header">
+						<a href="<?php echo site_url('admin/artikel/add') ?>"><i class="fas fa-plus"></i> Add New</a>
 					</div>
 					<div class="card-body">
 
@@ -28,26 +29,31 @@
 							<table class="table table-hover" id="dataTable" width="100%" cellspacing="0">
 								<thead>
 									<tr>
-										<th>Nama</th>
-										<th>Jabatan</th>
-										<th>Photo</th>
+										<th>id_User</th>
+										<th>judul</th>
+										<th>Foto</th>
+										<th>Detail</th>
 										<th>Action</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($struktur as $s) : ?>
+									<?php foreach ($artikel as $p) : ?>
 										<tr>
 											<td width="150">
-												<?php echo $s['nama'] ?>
+												<?php echo $p["username"] ?>
 											</td>
 											<td>
-												<?php echo $s['jabatan'] ?>
+												<?php echo $p["judul"] ?>
 											</td>
 											<td>
-												<img src="<?php echo base_url('upload/foto-penduduk/' . $s['foto']) ?>" width="64" />
+												<img src="<?php echo base_url('upload/artikel/' . $p["gambar_judul"]) ?>" width="64" />
 											</td>
 											<td width="250">
-												<a href="<?php echo site_url('admin/struktur/edit/' . $s['id']) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+												<a href="<?php echo site_url('admin/Artikel/artikel_detail/' . $p["id_artikel"]) ?>" class="btn btn-small"><i class="far fa-eye"></i></i> Detail</a>
+											</td>
+											<td width="250">
+												<a href="<?php echo site_url('admin/artikel/edit/' . $p["id_artikel"]) ?>" class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
+												<a class="btn btn-small dropdown-item" href="<?= base_url(); ?>admin/artikel/delete/<?= $p["id_artikel"] ?>" onclick="return confirm('Yakin Data Ini Akan Dihapus');" style="color: red"><i class="fas fa-trash"></i>Hapus</a>
 											</td>
 										</tr>
 									<?php endforeach; ?>

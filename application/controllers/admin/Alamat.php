@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Alamat extends CI_Controller
 {
@@ -9,14 +9,14 @@ class Alamat extends CI_Controller
         parent::__construct();
         $this->load->model("alamat_model");
         $this->load->library('form_validation');
-        if($this->session->userdata('jenis_user')!="Admin"){
-			redirect('Login','refresh');
-		}
+        if ($this->session->userdata('jenis_user') != "Admin") {
+            redirect('Login', 'refresh');
+        }
     }
 
     public function index()
     {
-        $data ['title'] = 'Desaku|| Alamat';
+        $data['title'] = 'Desaku|| Alamat';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
         $data["alamat"] = $this->alamat_model->getAll();
@@ -25,7 +25,7 @@ class Alamat extends CI_Controller
 
     public function add()
     {
-        $data ['title'] = 'Desaku|| Alamat';
+        $data['title'] = 'Desaku|| Alamat';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
         $alamat = $this->alamat_model;
@@ -43,8 +43,8 @@ class Alamat extends CI_Controller
     public function edit($id = null)
     {
         if (!isset($id)) redirect('admin/Alamat');
-     
-        $data ['title'] = 'Desaku|| Alamat';
+
+        $data['title'] = 'Desaku|| Alamat';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
 
@@ -59,14 +59,14 @@ class Alamat extends CI_Controller
 
         $data["alamat"] = $alamat->getById($id);
         if (!$data["alamat"]) show_404();
-        
+
         $this->load->view("admin/alamat_edit_form", $data);
     }
 
-    public function delete($id=null)
+    public function delete($id = null)
     {
         if (!isset($id)) show_404();
-        $data ['title'] = 'Desaku|| Alamat';
+        $data['title'] = 'Desaku|| Alamat';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
 

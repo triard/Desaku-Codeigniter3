@@ -45,8 +45,10 @@ class Overview extends CI_Controller
 			$data2['label2'][] = $row->pen;
 			$data2['data2'][] = $row->pd;
 		}
+
 		$data2['chart_data2'] = json_encode($data2);
 
+		//agenda
 		$data['nama2'] = $this->session->userdata('user');
 		$data['idUser'] = $this->session->userdata('id');
 		$data['surat'] =  $this->SuratModel->getJumlahSurat();

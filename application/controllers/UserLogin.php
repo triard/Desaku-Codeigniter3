@@ -25,15 +25,16 @@ class UserLogin extends CI_Controller
 		$data['title'] = "Desaku | Beranda";
 		$data['nama2'] = $this->session->userdata('username');
 		$data['idUser'] = $this->session->userdata('id');
-//        $data['profile'] = $this->login_model->getByIdPenduduk($id);
+		//        $data['profile'] = $this->login_model->getByIdPenduduk($id);
 		$this->load->view('usersLogin/index', $data);
 	}
 
-	public function view_profil($id){
+	public function view_profil($id)
+	{
 		$data['title'] = "Desaku | Profil";
 		$data['nama2'] = $this->session->userdata('username');
 		$data['idUser'] = $this->session->userdata('id');
-        $data['profile'] = $this->login_model->getByIdPenduduk($id);
+		$data['profile'] = $this->login_model->getByIdPenduduk($id);
 		$this->load->view('usersLogin/profil', $data);
 	}
 
@@ -79,5 +80,4 @@ class UserLogin extends CI_Controller
 			redirect('UserLogin', 'refresh');
 		}
 	}
-
 }
