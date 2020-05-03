@@ -55,7 +55,6 @@ class User extends CI_Controller
 
 	public function data_pendidikan()
 	{
-<<<<<<< HEAD
 		$query = $this->db->query("SELECT pendidikan as pen, COUNT(pendidikan) as pd FROM penduduk GROUP BY pendidikan");
 
 		$record = $query->result();
@@ -67,8 +66,6 @@ class User extends CI_Controller
 		}
 		$data['chart_data'] = json_encode($data);
 
-=======
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
 		$data['title'] = "Desaku | Data Pendidikan";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_pendidikan', $data);
@@ -76,7 +73,6 @@ class User extends CI_Controller
 
 	public function data_pekerjaan()
 	{
-<<<<<<< HEAD
 
 		$query = $this->db->query("SELECT pekerjaan as pen, COUNT(pekerjaan) as pd FROM penduduk GROUP BY pekerjaan");
 		$record = $query->result();
@@ -87,15 +83,12 @@ class User extends CI_Controller
 		}
 		$data['chart_data2'] = json_encode($data);
 
-=======
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
 		$data['title'] = "Desaku | Data Pekerjaan";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_pekerjaan', $data);
 	}
 	public function data_agama()
 	{
-<<<<<<< HEAD
 
 		$query = $this->db->query("SELECT agama as pen, COUNT(agama) as pd FROM penduduk GROUP BY agama");
 		$record = $query->result();
@@ -106,8 +99,6 @@ class User extends CI_Controller
 		}
 		$data['chart_data3'] = json_encode($data);
 
-=======
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
 		$data['title'] = "Desaku | Data Agama";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_agama', $data);
