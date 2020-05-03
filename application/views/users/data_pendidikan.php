@@ -129,9 +129,12 @@
                 <td class="angka">18</td>
                 <td class="angka">16.51%</td>
               </tr>
+<<<<<<< HEAD
               <?php
               $this->load->view('admin/_partials/chart_pendidikan', $chart_data);
               ?>
+=======
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
             </tbody>
           </table>
         </div>

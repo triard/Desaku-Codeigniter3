@@ -10,8 +10,13 @@ class Welcome extends CI_Controller
     {
         parent::__construct();
         $this->API = "https://api.kawalcorona.com";
+<<<<<<< HEAD
         $this->load->model('agenda_model');
         $this->load->model('ArtikelModel');
+=======
+		$this->load->model('agenda_model');
+		$this->load->model('artikel_model');
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
         $this->load->library('form_validation');
         $this->load->library('session');
         $this->load->library('curl');
@@ -22,6 +27,7 @@ class Welcome extends CI_Controller
     {
         $data['title'] = 'Beranda|| Desaku';
         $data['agenda'] = $this->agenda_model->get_agenda();
+<<<<<<< HEAD
         $data['artikel'] = $this->ArtikelModel->getArtikel();
         $data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
         $this->load->view('welcome_message', $data);
@@ -91,4 +97,10 @@ class Welcome extends CI_Controller
     //     $this->load->view("mahasiswa/edit", $data);
     //     $this->load->view('template/footer');
     // }
+=======
+		$data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
+		$data['artikel'] = $this->artikel_model->get_agenda();
+        $this->load->view('welcome_message', $data);
+    }
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
 }

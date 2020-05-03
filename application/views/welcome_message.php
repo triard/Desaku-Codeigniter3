@@ -111,6 +111,7 @@
 
         <br>
         <h2 style="color: red">Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
+
         <br>
         <div class="card-group">
           <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
@@ -137,6 +138,10 @@
 
           $list = $data[1]['attributes'];
           ?>
+<<<<<<< HEAD
+=======
+
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
           <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
             <div class="card-header"><?php echo $list['Provinsi']; ?></div>
             <div class="card-body">
@@ -145,16 +150,30 @@
               <p class="card-text">Kasus Meninggal <?php echo  $list['Kasus_Meni']; ?></p>
             </div>
           </div>
+<<<<<<< HEAD
         </div>
+=======
+
+          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+            <div class="card-header">Bojonegoro</div>
+            <div class="card-body">
+              <a href="http://covid19.boxer.or.id/" target="_blank" rel="noopener noreferrer" class="btn btn-danger" style="color:white">Detail</a>
+            </div>
+          </div>
+				</div>
+				<?php $this->load->view("users/artikel.php") ?>
+
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
       </div>
     </div>
+<<<<<<< HEAD
     <?php $this->load->view("usersLogin/template/sidebar.php") ?>
   </div>
   </div>
+=======
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
 
-  <div class="jumbotron text-center" style="margin-bottom:0">
-    <p>Footer</p>
-  </div>
+		<?php $this->load->view("users/footer.php") ?>
 
 </body>
 

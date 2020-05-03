@@ -1,6 +1,6 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Struktur extends CI_Controller
 {
@@ -13,10 +13,9 @@ class Struktur extends CI_Controller
 
     public function index()
     {
-        $data ['title'] = 'Desaku|| Agenda';
+        $data['title'] = 'Desaku|| Agenda';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
-
         $data["struktur"] = $this->struktur_model->getAll();
         $this->load->view("admin/struktur_list", $data);
     }
@@ -25,10 +24,10 @@ class Struktur extends CI_Controller
     public function edit($id = null)
     {
         if (!isset($id)) redirect('admin/struktur');
-        $data ['title'] = 'Desaku|| Agenda';
+        $data['title'] = 'Desaku|| Agenda';
         $data['idUser'] = $this->session->userdata('id');
         $data['nama2'] = $this->session->userdata('username');
-       
+
         $struktur = $this->struktur_model;
         $validation = $this->form_validation;
         $validation->set_rules($struktur->rules());
@@ -40,8 +39,7 @@ class Struktur extends CI_Controller
 
         $data["struktur"] = $struktur->getById($id);
         if (!$data["struktur"]) show_404();
-        
+
         $this->load->view("admin/struktur_edit_form", $data);
     }
-
 }

@@ -57,7 +57,7 @@ class PendudukModel extends CI_Model
     {
         return $this->db->get($this->_penduduk)->result();
     }
-    
+
     public function getById($id)
     {
         return $this->db->get_where($this->_penduduk, ["nik" => $id])->row();
@@ -103,7 +103,7 @@ class PendudukModel extends CI_Model
             $this->foto = $this->_uploadImage();
         } else {
             $this->foto = $post["old_image"];
-		}
+        }
         $this->db->update($this->_penduduk, $this, array('nik' => $post['nik']));
     }
 
@@ -114,32 +114,32 @@ class PendudukModel extends CI_Model
     }
 
     private function _uploadImage()
-	{
-		$config['upload_path']          = './upload/foto-penduduk/';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']            = $this->nik;
-		$config['overwrite']			= true;
-		$config['max_size']             = 1024; // 1MB
-		// $config['max_width']            = 1024;
-		// $config['max_height']           = 768;
+    {
+        $config['upload_path']          = './upload/foto-penduduk/';
+        $config['allowed_types']        = 'gif|jpg|png';
+        $config['file_name']            = $this->nik;
+        $config['overwrite']            = true;
+        $config['max_size']             = 1024; // 1MB
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
 
-		$this->load->library('upload', $config);
+        $this->load->library('upload', $config);
 
-		if ($this->upload->do_upload('foto')) {
-			return $this->upload->data("file_name");
-		}
-		
-		return "default.jpg";
-	}
+        if ($this->upload->do_upload('foto')) {
+            return $this->upload->data("file_name");
+        }
 
-	private function _deleteImage($id)
-	{
-		$penduduk = $this->getById($id);
-		if ($penduduk->foto != "default.jpg") {
-			$filename = explode(".", $penduduk->foto)[0];
-			return array_map('unlink', glob(FCPATH."upload/foto-penduduk/$filename.*"));
-		}
-	}
+        return "default.jpg";
+    }
+
+    private function _deleteImage($id)
+    {
+        $penduduk = $this->getById($id);
+        if ($penduduk->foto != "default.jpg") {
+            $filename = explode(".", $penduduk->foto)[0];
+            return array_map('unlink', glob(FCPATH . "upload/foto-penduduk/$filename.*"));
+        }
+    }
 
     public function getJumlahPengaduan()
     {
@@ -150,7 +150,6 @@ class PendudukModel extends CI_Model
     {
         return $this->db->query("SELECT COUNT('nik') FROM penduduk")->row_array();
     }
-
 }
 
 /* End of file PendudukModel.php */

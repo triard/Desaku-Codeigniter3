@@ -46,11 +46,10 @@ class agenda_model extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('agenda');
-        $this->db->order_by('tanggal','ASC');
+        $this->db->order_by('tanggal','DESC');
         $this->db->limit(3);
         $query = $this->db->get();
         return $query->result();
-
     }
 
     public function tambahAgenda()
