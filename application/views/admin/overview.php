@@ -93,13 +93,19 @@
 						</div>
 					</div>
 				</div>
-				<div>
-					<?php $this->load->view('admin/_partials/chart_pendidikan', $data); ?>
-				</div>
 				<br>
 				<div>
-					<?php $this->load->view('admin/_partials/chart_pekerjaan', $data); ?>
+					<?php
+					$this->load->view('admin/_partials/chart_pendidikan', $data);
+					echo "<br><hr>";
+					$this->load->view('admin/_partials/chart_pekerjaan', $data);
+					echo "<br><hr>";
+					$this->load->view('admin/_partials/chart_agama', $data);
+					// var_dump($chart_data4)
+					// $this->load->view('admin/_partials/chart_jeniskelamin', $data);
+					?>
 				</div>
+
 
 
 				<!-- Area Chart Example-->
@@ -113,9 +119,6 @@
 
 		</div>
 		<!-- /#wrapper -->
-
-
-
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 		<?php $this->load->view("admin/_partials/modal.php") ?>
 		<?php $this->load->view("admin/_partials/js.php") ?>

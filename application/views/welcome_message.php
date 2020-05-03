@@ -1,3 +1,7 @@
+<?php
+// var_dump($artikel);
+// die();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,9 +26,7 @@
 </head>
 
 <body>
-  <?php //var_dump($artikel);
-  //die(); 
-  ?>
+
 
   <div class="container" style="margin-top:30px">
     <div class="jumbotron text-center" style="margin-bottom:0">
@@ -91,14 +93,18 @@
         <?php endif; ?>
 
         <?php foreach ($artikel as $art) : ?>
-          <?php if (strlen($art['isi']) <= 30) : ?>
-            <h1><?= $art['judul'] ?></h1>
+          <?php if (strlen($art['isi']) <= 4) : ?>
+            <h1><?= $art['judul']; ?></h1>
             <p><?= $art['tgl_upload'] ?></p>
             <br>
-            <p><?= $art['isi'] ?></p>
+            <p><?= //$art['isi'];
+                  $art['id']  ?></p>
+            <a href="<?php echo base_url('Welcome/detail/' . $art['id']) ?>">Read More</a>
           <?php else : ?>
-            <?php $y = substr($art['isi'], 0, 200) . ' <br><br><a href=Welcome/detail/id/' . $art['id'] . '>READMORE</a>';
+            <h1><?= $art['judul']; ?></h1>
+            <?php $y = substr($art['isi'], 0, 25) . " ..." . ' <br><br><a href=Welcome/detail/' . $art['id'] . '>READMORE</a>';
             echo $y; ?>
+            <hr>
           <?php endif; ?>
         <?php endforeach; ?>
 
@@ -129,7 +135,7 @@
 
           $data = json_decode($json, true);
 
-          $list = $data[2]['attributes'];
+          $list = $data[1]['attributes'];
           ?>
           <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
             <div class="card-header"><?php echo $list['Provinsi']; ?></div>
@@ -139,38 +145,11 @@
               <p class="card-text">Kasus Meninggal <?php echo  $list['Kasus_Meni']; ?></p>
             </div>
           </div>
-          <?php
-          $url = 'https://bokusan.my.id/api/jawa-timur';
-
-          $ch = curl_init();
-          curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-          curl_setopt($ch, CURLOPT_URL, $url);
-          $json = curl_exec($ch);
-          curl_close($ch);
-
-          $data = json_decode($json, true);
-
-          $list = $data['data']['all'];
-          ?>
-
-          <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
-            <?php foreach ($list as $key => $value) : ?>
-              <?php if ($value['region'] == "Kabupaten Bojonegoro") : ?>
-                <div class="card-header"><?php echo $value['region'] ?></div>
-                <div class="card-body">
-                  <p class="card-text">Positif : <?= $value['confirmed']; ?> Orang</p>
-                  <p class="card-text">Sembuh : <?= $value['recovered']; ?> Orang</p>
-                  <p class="card-text">Meninggal : <?= $value['deaths']; ?> Orang</p>
-                <?php endif ?>
-              <?php endforeach; ?>
-
-                </div>
-          </div>
         </div>
       </div>
-      <?php $this->load->view("usersLogin/template/sidebar.php") ?>
     </div>
+    <?php $this->load->view("usersLogin/template/sidebar.php") ?>
+  </div>
   </div>
 
   <div class="jumbotron text-center" style="margin-bottom:0">
