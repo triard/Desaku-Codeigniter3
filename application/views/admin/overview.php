@@ -5,7 +5,7 @@
 	<?php $this->load->view("admin/_partials/head.php") ?>
 </head>
 
-<body id="page-top">
+<body id="page-top" style="margin: 50px 0px 0px 230px;">
 
 	<?php $this->load->view("admin/_partials/navbar.php") ?>
 
@@ -17,13 +17,7 @@
 
 			<div class="container-fluid">
 
-				<!-- 
-        karena ini halaman overview (home), kita matikan partial breadcrumb.
-        Jika anda ingin mengampilkan breadcrumb di halaman overview,
-        silahkan hilangkan komentar (//) di tag PHP di bawah.
-        -->
-				<?php //$this->load->view("admin/_partials/breadcrumb.php") 
-				?>
+				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
 				<!-- Icon Cards-->
 				<div class="row">
@@ -106,19 +100,10 @@
 					?>
 				</div>
 
-
-
-				<!-- Area Chart Example-->
-				<!-- /.container-fluid -->
-
-				<!-- Sticky Footer -->
 				<?php $this->load->view("admin/_partials/footer.php") ?>
-
 			</div>
-			<!-- /.content-wrapper -->
 
 		</div>
-		<!-- /#wrapper -->
 		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
 		<?php $this->load->view("admin/_partials/modal.php") ?>
 		<?php $this->load->view("admin/_partials/js.php") ?>

@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="sidebar navbar-nav">
+<ul class="sidebar fixed-top navbar-nav ">
 	<li class="nav-item <?php echo $this->uri->segment(2) == '' ? 'active' : '' ?>">
 		<a class="nav-link" href="<?php echo base_url('admin/overview') ?>">
 			<i class="fas fa-fw fa-tachometer-alt"></i>

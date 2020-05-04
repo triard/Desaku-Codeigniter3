@@ -1,6 +1,4 @@
 <?php
-// var_dump($artikel);
-// die();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,11 +26,11 @@
 <body>
 
 
-  <div class="container" style="margin-top:30px">
+  <div class="container">
     <div class="jumbotron text-center" style="margin-bottom:0">
       <h1>DESA TRATE</h1>
-      <p>KECAMATAN SUGIHWARAS KABUPATEN BOJONEGORO <br>
-        JL. RAYA KEDUNGADEM - KODEPOS 6281</p>
+      <p>KECAMATAN SUGIHWARAS KABUPATEN BOJONEGORO</p>
+       <p> JL. RAYA KEDUNGADEM - KODEPOS 6281</p>
     </div>
 
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
@@ -85,35 +83,17 @@
     </nav>
     <div class="row">
       <div class="col-sm-8">
-        <br>
         <?php if ($this->session->flashdata('success')) : ?>
           <div class="alert alert-success" role="alert">
             <?php echo $this->session->flashdata('success'); ?>
           </div>
         <?php endif; ?>
+				<h2 class="mt-3" style="color: red">
+				<span class="badge badge-danger">Info Corona</span>
+				</h2> 
+				last update <?php echo date("Y-m-d"); ?>
 
-        <?php foreach ($artikel as $art) : ?>
-          <?php if (strlen($art['isi']) <= 4) : ?>
-            <h1><?= $art['judul']; ?></h1>
-            <p><?= $art['tgl_upload'] ?></p>
-            <br>
-            <p><?= //$art['isi'];
-                  $art['id']  ?></p>
-            <a href="<?php echo base_url('Welcome/detail/' . $art['id']) ?>">Read More</a>
-          <?php else : ?>
-            <h1><?= $art['judul']; ?></h1>
-            <?php $y = substr($art['isi'], 0, 25) . " ..." . ' <br><br><a href=Welcome/detail/' . $art['id'] . '>READMORE</a>';
-            echo $y; ?>
-            <hr>
-          <?php endif; ?>
-        <?php endforeach; ?>
-
-
-        <br>
-        <h2 style="color: red">Info Corona</h2> last update <?php echo date("Y-m-d"); ?>
-
-        <br>
-        <div class="card-group">
+        <div class="card-group mt-2">
           <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
             <?php foreach ($corona as $c) : ?>
               <div class="card-header"><?php echo $c->name ?></div>
@@ -138,21 +118,14 @@
 
           $list = $data[1]['attributes'];
           ?>
-<<<<<<< HEAD
-=======
-
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
           <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
             <div class="card-header"><?php echo $list['Provinsi']; ?></div>
             <div class="card-body">
-              <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi']; ?><br></p>
+              <p class="card-text">Kasus Positif : <?php echo  $list['Kasus_Posi']; ?></p>
               <p class="card-text">Kasus Sembuh : <?php echo  $list['Kasus_Semb']; ?></p>
               <p class="card-text">Kasus Meninggal <?php echo  $list['Kasus_Meni']; ?></p>
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-=======
 
           <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
             <div class="card-header">Bojonegoro</div>
@@ -163,16 +136,11 @@
 				</div>
 				<?php $this->load->view("users/artikel.php") ?>
 
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
       </div>
     </div>
-<<<<<<< HEAD
     <?php $this->load->view("usersLogin/template/sidebar.php") ?>
   </div>
   </div>
-=======
->>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
-
 		<?php $this->load->view("users/footer.php") ?>
 
 </body>

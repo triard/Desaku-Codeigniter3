@@ -8,7 +8,7 @@
     <?php $this->load->view("admin/_partials/head.php") ?>
 </head>
 
-<body id="page-top">
+<body id="page-top"  style="margin: 50px 0px 0px 230px;">
     <?php $this->load->view("admin/_partials/navbar.php") ?>
     <div id="wrapper">
         <?php $this->load->view("admin/_partials/sidebar.php") ?>
@@ -16,8 +16,7 @@
         <div id="content-wrapper">
 
             <div class="container-fluid">
-                <h1>Agenda Desa Trate</h1>
-                <br>
+			<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
                 <a href="<?php echo site_url('admin/agenda/add_agenda') ?>" class="btn btn-success"><i class="fas fa-plus"></i>Tambah Agenda</a><br>
                 <br>
                 <div style="overflow-y: scroll;overflow-x: scroll; width: 100%;border: 1px black dotted;">
