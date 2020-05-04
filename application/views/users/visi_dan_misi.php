@@ -83,18 +83,21 @@
     </nav>
     <div class="row">
       <div class="col-sm-8">
-        <br><br>
-        <?php foreach ($visi as $v) : ?>
+			<div class="card m-2">
+					<div class="card-header">
           <h2>Visi dan Misi Dan Program Kerja</h2>
-          <p>Sebagaimana desa-desa yang lain, Desa Trate Kecamatan Sugihwaras juga memiliki Visi dan Misi bagi desanya serta program kerja desa. Berikut uraian visi dan misi serta program kerja Desa Trate Kecamatan Sugihwaras Kabupaten Bojonegoro.</p>
+					</div>
+					<?php foreach ($visi as $v) : ?>
+					<div class="card-body">
+					<p>Sebagaimana desa-desa yang lain, Desa Trate Kecamatan Sugihwaras juga memiliki Visi dan Misi bagi desanya serta program kerja desa. Berikut uraian visi dan misi serta program kerja Desa Trate Kecamatan Sugihwaras Kabupaten Bojonegoro.</p>
           <br>
           <h3>
-            <center>Visi</center>
+            <center>Visi</center><hr>
           </h3>
           <p>"<b><?= $v->visi; ?></b>".</p>
           <br>
           <h3>
-            <center>Misi</center>
+            <center>Misi</center><hr>
           </h3>
           <p>1. <?= $v->misi1; ?></p>
           <p>2. <?= $v->misi2; ?></p>
@@ -103,7 +106,7 @@
           <p>5.<?= $v->misi5; ?></p>
           <br>
           <h3>
-            <center>Program Kerja</center>
+            <center>Program Kerja</center><hr>
           </h3>
           <p>1. <?= $v->proker1; ?></p>
           <p>2. <?= $v->proker2; ?></p>
@@ -113,7 +116,8 @@
           <p>6. <?= $v->proker6; ?></p>
           <br>
         <?php endforeach; ?>
-
+					</div>
+				</div>
       </div>
       <?php $this->load->view("usersLogin/template/sidebar.php") ?>
     </div>

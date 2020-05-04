@@ -9,6 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <style>
     .fakeimg {
       height: 200px;
@@ -101,6 +103,10 @@
         <div class="tabel-style">
 
           <table class="table">
+<<<<<<< HEAD
+            <?php $this->load->view('admin/_partials/chart_agama', $chart_data3); ?><br>
+=======
+>>>>>>> cdb2737a41216a715d88e5743fa512336f7dff27
             <thead>
               <tr>
                 <th rowspan="2" style="text-align:left;">Kelompok</th>

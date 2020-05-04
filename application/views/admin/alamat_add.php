@@ -5,7 +5,7 @@
 	<?php $this->load->view("admin/_partials/head.php") ?>
 </head>
 
-<body id="page-top">
+<body id="page-top" style="margin: 50px 0px 0px 250px;">
 
 	<?php $this->load->view("admin/_partials/navbar.php") ?>
 	<div id="wrapper">
@@ -15,10 +15,9 @@
 		<div id="content-wrapper">
 
 			<div class="container-fluid">
+			<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
 
-				<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
-
-				<?php if ($this->session->flashdata('success')) : ?>
+			<?php if ($this->session->flashdata('success')) : ?>
 					<div class="alert alert-success" role="alert">
 						<?php echo $this->session->flashdata('success'); ?>
 					</div>
@@ -69,6 +68,7 @@
 						</form>
 
 					</div>
+					
 
 					<div class="card-footer small text-muted">
 						* required fields

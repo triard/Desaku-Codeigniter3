@@ -1,24 +1,25 @@
 <div class="chart-container">
     <div class="bar-chart-container">
-        <canvas style="height:40vh; width:80vw" id="bar-chart2"></canvas>
+        <canvas style="height:40vh; width:80vw" id="bar-chart3"></canvas>
     </div>
 </div>
 
 <!-- javascript -->
 
+
 <script>
     $(function() {
         //get the bar chart canvas
-        var cData = JSON.parse('<?php echo $chart_data2; ?>');
+        var cData = JSON.parse('<?php echo $chart_data3; ?>');
         console.log(cData);
-        var ctx = $("#bar-chart2");
+        var ctx = $("#bar-chart3");
 
         //bar chart data
         var data = {
-            labels: cData.label2,
+            labels: cData.label3,
             datasets: [{
-                label: cData.label2,
-                data: cData.data2,
+                label: cData.label3,
+                data: cData.data3,
                 backgroundColor: [
                     "#00ff00",
                     "#ff3399",
@@ -56,7 +57,7 @@
             title: {
                 display: true,
                 position: "top",
-                text: "Perbandingan Pekerjaan Penduduk",
+                text: "Perbandingan Agama Penduduk",
                 fontSize: 18,
                 fontColor: "#111"
             },

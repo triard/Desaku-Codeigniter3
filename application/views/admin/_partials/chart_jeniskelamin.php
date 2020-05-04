@@ -1,6 +1,6 @@
 <div class="chart-container">
     <div class="bar-chart-container">
-        <canvas style="height:40vh; width:80vw" id="bar-chart2"></canvas>
+        <canvas style="height:40vh; width:80vw" id="bar-chart5"></canvas>
     </div>
 </div>
 
@@ -9,16 +9,16 @@
 <script>
     $(function() {
         //get the bar chart canvas
-        var cData = JSON.parse('<?php echo $chart_data2; ?>');
+        var cData = JSON.parse('<?php echo $chart_data4; ?>');
         console.log(cData);
-        var ctx = $("#bar-chart2");
+        var ctx = $("#bar-chart5");
 
         //bar chart data
         var data = {
-            labels: cData.label2,
+            labels: cData.label4,
             datasets: [{
-                label: cData.label2,
-                data: cData.data2,
+                label: cData.label4,
+                data: cData.data4,
                 backgroundColor: [
                     "#00ff00",
                     "#ff3399",
@@ -56,7 +56,7 @@
             title: {
                 display: true,
                 position: "top",
-                text: "Perbandingan Pekerjaan Penduduk",
+                text: "Perbandingan Kelamin Penduduk",
                 fontSize: 18,
                 fontColor: "#111"
             },

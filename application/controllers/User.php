@@ -55,6 +55,17 @@ class User extends CI_Controller
 
 	public function data_pendidikan()
 	{
+		$query = $this->db->query("SELECT pendidikan as pen, COUNT(pendidikan) as pd FROM penduduk GROUP BY pendidikan");
+
+		$record = $query->result();
+		$data = [];
+
+		foreach ($record as $row) {
+			$data['label'][] = $row->pen;
+			$data['data'][] = $row->pd;
+		}
+		$data['chart_data'] = json_encode($data);
+
 		$data['title'] = "Desaku | Data Pendidikan";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_pendidikan', $data);
@@ -62,12 +73,32 @@ class User extends CI_Controller
 
 	public function data_pekerjaan()
 	{
+
+		$query = $this->db->query("SELECT pekerjaan as pen, COUNT(pekerjaan) as pd FROM penduduk GROUP BY pekerjaan");
+		$record = $query->result();
+		$data = [];
+		foreach ($record as $row) {
+			$data['label2'][] = $row->pen;
+			$data['data2'][] = $row->pd;
+		}
+		$data['chart_data2'] = json_encode($data);
+
 		$data['title'] = "Desaku | Data Pekerjaan";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_pekerjaan', $data);
 	}
 	public function data_agama()
 	{
+
+		$query = $this->db->query("SELECT agama as pen, COUNT(agama) as pd FROM penduduk GROUP BY agama");
+		$record = $query->result();
+		$data = [];
+		foreach ($record as $row) {
+			$data['label3'][] = $row->pen;
+			$data['data3'][] = $row->pd;
+		}
+		$data['chart_data3'] = json_encode($data);
+
 		$data['title'] = "Desaku | Data Agama";
 		$data['agenda'] = $this->agenda_model->get_agenda();
 		$this->load->view('users/data_agama', $data);

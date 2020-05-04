@@ -5,7 +5,7 @@
 	<?php $this->load->view("admin/_partials/head.php") ?>
 </head>
 
-<body id="page-top">
+<body id="page-top" style="margin: 50px 0px 0px 230px;">
 
 	<?php $this->load->view("admin/_partials/navbar.php") ?>
 	<div id="wrapper">
