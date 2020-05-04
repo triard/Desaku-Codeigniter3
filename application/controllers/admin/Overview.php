@@ -48,7 +48,6 @@ class Overview extends CI_Controller
 
 		$data2['chart_data2'] = json_encode($data2);
 
-
 		//Agama
 		$query = $this->db->query("SELECT agama as pen, COUNT(agama) as pd FROM penduduk GROUP BY agama");
 		$record = $query->result();
@@ -71,6 +70,7 @@ class Overview extends CI_Controller
 		$data3['chart_data4'] = json_encode($data4);
 
 
+		//agenda
 		$data['nama2'] = $this->session->userdata('user');
 		$data['idUser'] = $this->session->userdata('id');
 		$data['surat'] =  $this->SuratModel->getJumlahSurat();
@@ -80,8 +80,6 @@ class Overview extends CI_Controller
 
 		$data = array_merge($data, $data2, $data1, $data3, $data4);
 
-		// print_r($data);
-		// die();
 
 		$this->load->view('admin/overview', $data);
 	}

@@ -1,3 +1,4 @@
+<?php var_dump($pengaduanDetail); ?>
 <!DOCTYPE html>
 <html lang="en">
 

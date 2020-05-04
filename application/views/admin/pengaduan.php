@@ -16,7 +16,8 @@
         <div id="content-wrapper">
 
             <div class="container-fluid">
-			<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
+      			<?php $this->load->view("admin/_partials/breadcrumb.php") ?>
+                <h1>Daftar Pengaduan Penduduk</h1>
 
                 <div style="overflow-y: scroll;overflow-x: scroll; width: 100%;border: 1px black dotted;">
 
@@ -54,5 +55,3 @@
             });
         </script>
 </body>
-
-</html>

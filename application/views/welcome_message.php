@@ -1,3 +1,5 @@
+<?php
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,9 +116,8 @@
 
           $data = json_decode($json, true);
 
-          $list = $data[2]['attributes'];
+          $list = $data[1]['attributes'];
           ?>
-
           <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
             <div class="card-header"><?php echo $list['Provinsi']; ?></div>
             <div class="card-body">
@@ -136,9 +137,10 @@
 				<?php $this->load->view("users/artikel.php") ?>
 
       </div>
-      <?php $this->load->view("usersLogin/template/sidebar.php") ?>
     </div>
-
+    <?php $this->load->view("usersLogin/template/sidebar.php") ?>
+  </div>
+  </div>
 		<?php $this->load->view("users/footer.php") ?>
 
 </body>
