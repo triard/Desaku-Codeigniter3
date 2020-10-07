@@ -36,7 +36,7 @@ class Welcome extends CI_Controller
         $data['detail'] = $this->ArtikelModel->getById($id);
         $this->load->view('artikel/detail', $data);
     }
-    		$data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
+    		// $data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
 		    $data['artikel'] = $this->artikel_model->get_agenda();
         $data['corona'] = json_decode($this->curl->simple_get($this->API . '/indonesia'));
         $this->load->view('welcome_message', $data);
@@ -48,4 +48,3 @@ public function detail($id)
         $this->load->view('artikel/detail', $data);
     }
     
-}
